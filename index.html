@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Ajay Chakravarthy G — Cloud and DevOps Engineer in Chennai. GitLab CI/CD, Kubernetes, DevSecOps for a product fintech platform.">
+<title>Ajay Chakravarthy G</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* ---------- tokens: light is the base, every token declared here ---------- */
+:root{
+  --bg:#F2F4F7;
+  --surface:#FFFFFF;
+  --surface-2:#E8EDF3;
+  --ink:#101720;
+  --ink-2:#3B4657;
+  --muted:#6B7789;
+  --line:#D9E0E8;
+  --line-strong:#B9C4D1;
+  --accent:#A9540A;
+  --accent-ink:#7C3D06;
+  --accent-wash:#F7E7D2;
+  --on-accent:#FFFFFF;
+  --node:#8A96A6;
+  --code-bg:#11161D;
+  --code-ink:#C9D3E0;
+  --code-muted:#5D6B7D;
+  --code-key:#E0A55B;
+  --shadow:0 1px 2px rgba(16,23,32,.06), 0 8px 24px -18px rgba(16,23,32,.5);
+  --ring:0 0 0 3px rgba(169,84,10,.28);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D1117;
+    --surface:#141A22;
+    --surface-2:#1B222C;
+    --ink:#E8EDF4;
+    --ink-2:#B4BFCD;
+    --muted:#7E8A9B;
+    --line:#232B36;
+    --line-strong:#37414F;
+    --accent:#F0A93F;
+    --accent-ink:#F6C079;
+    --accent-wash:#33260F;
+    --on-accent:#14180F;
+    --node:#4C596B;
+    --code-bg:#0A0E13;
+    --code-ink:#C9D3E0;
+    --code-muted:#5D6B7D;
+    --code-key:#E0A55B;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -20px rgba(0,0,0,.9);
+    --ring:0 0 0 3px rgba(240,169,63,.3);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D1117;
+  --surface:#141A22;
+  --surface-2:#1B222C;
+  --ink:#E8EDF4;
+  --ink-2:#B4BFCD;
+  --muted:#7E8A9B;
+  --line:#232B36;
+  --line-strong:#37414F;
+  --accent:#F0A93F;
+  --accent-ink:#F6C079;
+  --accent-wash:#33260F;
+  --on-accent:#14180F;
+  --node:#4C596B;
+  --code-bg:#0A0E13;
+  --code-ink:#C9D3E0;
+  --code-muted:#5D6B7D;
+  --code-key:#E0A55B;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px -20px rgba(0,0,0,.9);
+  --ring:0 0 0 3px rgba(240,169,63,.3);
+  color-scheme: dark;
+}
+
+/* ---------- base ---------- */
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size:16px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px}
+
+.shell{max-width:1120px; margin:0 auto; padding:0 28px}
+
+.mono{font-family:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace}
+.eyebrow{
+  font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  font-size:.7rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* ---------- top bar ---------- */
+.topbar{
+  border-bottom:1px solid var(--line);
+  background:var(--bg);
+  position:sticky; top:0; z-index:20;
+}
+.topbar-in{
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding-top:14px; padding-bottom:14px;
+}
+.mark{display:flex; align-items:center; gap:10px; font-size:.82rem; letter-spacing:.02em}
+.mark-dot{
+  width:9px; height:9px; border-radius:2px; background:var(--accent);
+  box-shadow:0 0 0 4px var(--accent-wash);
+}
+.mark strong{font-weight:600}
+.mark span{color:var(--muted)}
+.tbtn{
+  font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--ink-2); background:var(--surface);
+  border:1px solid var(--line); border-radius:3px;
+  padding:7px 12px; cursor:pointer;
+}
+.tbtn:hover{border-color:var(--line-strong); color:var(--ink)}
+
+/* ---------- hero ---------- */
+.hero{padding:64px 0 56px; border-bottom:1px solid var(--line)}
+.hero-grid{display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:56px; align-items:start}
+.hero h1{
+  font-family:"Archivo", ui-sans-serif, system-ui, sans-serif;
+  font-weight:700; letter-spacing:-.035em; line-height:1.02;
+  font-size:clamp(2.7rem, 6.4vw, 4.4rem);
+  margin:14px 0 0; text-wrap:balance;
+}
+.hero h1 em{font-style:normal; color:var(--accent)}
+.hero-role{
+  font-family:"Archivo", sans-serif; font-weight:500;
+  font-size:clamp(1rem,2vw,1.2rem); color:var(--ink-2);
+  margin:14px 0 0; letter-spacing:-.005em;
+}
+.hero-sum{margin:20px 0 0; max-width:60ch; color:var(--ink-2); font-size:1.02rem}
+.hero-links{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px}
+.link{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:"IBM Plex Mono", monospace; font-size:.76rem; letter-spacing:.03em;
+  text-decoration:none; color:var(--ink);
+  border:1px solid var(--line-strong); border-radius:3px;
+  padding:9px 14px; background:var(--surface);
+}
+.link:hover{border-color:var(--accent); color:var(--accent-ink)}
+.link.primary{background:var(--accent); border-color:var(--accent); color:var(--on-accent)}
+.link.primary:hover{filter:brightness(1.06); border-color:var(--accent); color:var(--on-accent)}
+
+/* yaml identity card */
+.yaml{
+  background:var(--code-bg); border:1px solid var(--line);
+  border-radius:5px; overflow:hidden; box-shadow:var(--shadow);
+}
+.yaml-bar{
+  display:flex; align-items:center; gap:8px;
+  padding:10px 14px; border-bottom:1px solid rgba(255,255,255,.07);
+  font-family:"IBM Plex Mono", monospace; font-size:.7rem; color:var(--code-muted);
+}
+.yaml-bar i{width:7px; height:7px; border-radius:50%; background:#3A4552; display:block}
+.yaml-bar i:first-child{background:var(--code-key)}
+.yaml-bar span{margin-left:6px; letter-spacing:.02em}
+.yaml pre{
+  margin:0; padding:18px 16px 20px;
+  font-family:"IBM Plex Mono", monospace; font-size:.78rem; line-height:1.85;
+  color:var(--code-ink); overflow-x:auto;
+}
+.yaml .c{color:var(--code-muted)}
+.yaml .k{color:var(--code-key)}
+
+/* stat strip */
+.stats{
+  display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:1px;
+  background:var(--line); border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+}
+.stat{background:var(--bg); padding:22px 4px 22px 0}
+.stat b{
+  display:block; font-family:"Archivo", sans-serif; font-weight:600;
+  font-size:1.7rem; letter-spacing:-.03em; line-height:1.1;
+  font-variant-numeric:tabular-nums;
+}
+.stat span{display:block; font-size:.82rem; color:var(--muted); margin-top:4px; max-width:22ch}
+.stat:not(:first-child){padding-left:22px}
+
+/* ---------- body layout ---------- */
+.main{display:grid; grid-template-columns:180px minmax(0,1fr); gap:56px; padding:60px 0 0}
+.rail{position:sticky; top:88px; align-self:start; display:flex; flex-direction:column; gap:2px}
+.rail a{
+  font-family:"IBM Plex Mono", monospace; font-size:.74rem; letter-spacing:.06em;
+  text-transform:uppercase; text-decoration:none; color:var(--muted);
+  padding:7px 0 7px 14px; border-left:2px solid var(--line);
+}
+.rail a:hover{color:var(--ink)}
+.rail a.on{color:var(--accent-ink); border-left-color:var(--accent)}
+
+.col{display:flex; flex-direction:column; gap:74px; padding-bottom:90px}
+section{scroll-margin-top:96px}
+.sec-head{display:flex; align-items:baseline; gap:14px; margin-bottom:26px}
+.sec-head h2{
+  font-family:"Archivo", sans-serif; font-weight:600; letter-spacing:-.025em;
+  font-size:clamp(1.4rem,2.6vw,1.8rem); margin:0;
+}
+.sec-head .rule{flex:1; height:1px; background:var(--line)}
+
+/* ---------- pipeline ---------- */
+.pipe{display:flex; flex-direction:column; gap:0}
+.stage{display:grid; grid-template-columns:26px minmax(0,1fr); gap:22px}
+.track{display:flex; flex-direction:column; align-items:center; gap:0}
+.node{
+  width:15px; height:15px; border-radius:3px; margin-top:6px; flex:none;
+  border:2px solid var(--node); background:var(--bg);
+}
+.node.done{background:var(--node)}
+.node.run{
+  border-color:var(--accent); background:var(--accent);
+  animation:pulse 2.6s ease-out infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 var(--accent-wash)}
+  70%{box-shadow:0 0 0 9px transparent}
+  100%{box-shadow:0 0 0 0 transparent}
+}
+.wire{
+  width:2px; flex:1; background:var(--line-strong); margin:8px 0;
+  transform-origin:top; animation:draw .7s ease-out both;
+}
+@keyframes draw{from{transform:scaleY(0)} to{transform:scaleY(1)}}
+.stage-body{padding-bottom:44px; min-width:0}
+.stage:last-child .stage-body{padding-bottom:0}
+.stage-top{display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 16px}
+.stage-top h3{
+  font-family:"Archivo", sans-serif; font-weight:600; font-size:1.18rem;
+  letter-spacing:-.02em; margin:0;
+}
+.stage-idx{
+  font-family:"IBM Plex Mono", monospace; font-size:.7rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--muted);
+}
+.stage-meta{
+  display:flex; flex-wrap:wrap; gap:8px 14px; margin-top:8px;
+  font-family:"IBM Plex Mono", monospace; font-size:.74rem; color:var(--muted);
+  font-variant-numeric:tabular-nums;
+}
+.stage-meta .now{color:var(--accent-ink)}
+.jobs{list-style:none; margin:20px 0 0; padding:0; display:grid; gap:2px}
+.jobs li{
+  display:grid; grid-template-columns:132px minmax(0,1fr); gap:18px;
+  padding:11px 12px 11px 0; border-top:1px solid var(--line);
+}
+.jobs li:last-child{border-bottom:1px solid var(--line)}
+.jobs .tag{
+  font-family:"IBM Plex Mono", monospace; font-size:.72rem; color:var(--muted);
+  letter-spacing:.02em; padding-top:2px;
+}
+.jobs p{margin:0; font-size:.95rem; color:var(--ink-2)}
+.jobs strong{color:var(--ink); font-weight:600}
+
+/* ---------- work ---------- */
+.work{display:grid; gap:18px}
+.card{
+  background:var(--surface); border:1px solid var(--line); border-radius:5px;
+  padding:24px 24px 22px; display:grid; gap:10px;
+}
+.card.lead{border-color:var(--accent); box-shadow:var(--shadow)}
+.card-top{display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:10px}
+.card h3{
+  font-family:"Archivo", sans-serif; font-weight:600; font-size:1.06rem;
+  letter-spacing:-.015em; margin:0;
+}
+.card p{margin:0; font-size:.95rem; color:var(--ink-2); max-width:68ch}
+.impact{
+  font-family:"IBM Plex Mono", monospace; font-size:.72rem; letter-spacing:.04em;
+  color:var(--accent-ink); background:var(--accent-wash);
+  border-radius:3px; padding:4px 9px; white-space:nowrap;
+}
+.chips{display:flex; flex-wrap:wrap; gap:6px; margin-top:4px}
+.chip{
+  font-family:"IBM Plex Mono", monospace; font-size:.7rem; color:var(--muted);
+  border:1px solid var(--line); border-radius:3px; padding:3px 8px; background:var(--bg);
+}
+
+/* ---------- toolchain ---------- */
+.tools{display:grid; gap:0}
+.tool-row{
+  display:grid; grid-template-columns:210px minmax(0,1fr); gap:24px;
+  padding:18px 0; border-top:1px solid var(--line);
+}
+.tool-row:last-child{border-bottom:1px solid var(--line)}
+.tool-row h3{
+  font-family:"IBM Plex Mono", monospace; font-weight:500; font-size:.74rem;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin:0; padding-top:4px;
+}
+.tool-row div{display:flex; flex-wrap:wrap; gap:7px}
+.tool-row span{
+  font-size:.86rem; color:var(--ink-2);
+  border:1px solid var(--line); border-radius:3px; padding:4px 10px; background:var(--surface);
+}
+
+/* ---------- credentials ---------- */
+.creds{display:grid; gap:14px}
+.cred{
+  display:grid; grid-template-columns:minmax(0,1fr) auto; gap:12px; align-items:baseline;
+  border-left:2px solid var(--line-strong); padding:4px 0 4px 18px;
+}
+.cred h3{font-family:"Archivo",sans-serif; font-weight:600; font-size:1rem; margin:0; letter-spacing:-.01em}
+.cred p{margin:3px 0 0; font-size:.88rem; color:var(--muted)}
+.cred .when{font-family:"IBM Plex Mono", monospace; font-size:.75rem; color:var(--muted); font-variant-numeric:tabular-nums}
+
+/* ---------- contact ---------- */
+.contact{
+  background:var(--surface); border:1px solid var(--line); border-radius:5px;
+  padding:34px 30px; display:grid; gap:18px;
+}
+.contact h2{
+  font-family:"Archivo",sans-serif; font-weight:600; letter-spacing:-.03em;
+  font-size:clamp(1.5rem,3vw,2rem); margin:0; text-wrap:balance;
+}
+.contact p{margin:0; color:var(--ink-2); max-width:56ch}
+footer{
+  border-top:1px solid var(--line); padding:26px 0 40px;
+  display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px;
+  font-family:"IBM Plex Mono", monospace; font-size:.72rem; color:var(--muted);
+}
+
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:minmax(0,1fr); gap:34px}
+  .main{grid-template-columns:minmax(0,1fr); gap:0}
+  .rail{display:none}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stat:not(:first-child){padding-left:0}
+  .stat:nth-child(even){padding-left:22px}
+}
+@media (max-width:620px){
+  .shell{padding:0 20px}
+  .hero{padding:44px 0 40px}
+  .jobs li{grid-template-columns:minmax(0,1fr); gap:4px}
+  .tool-row{grid-template-columns:minmax(0,1fr); gap:12px}
+  .col{gap:58px}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important; transition:none !important}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="shell topbar-in">
+    <div class="mark">
+      <span class="mark-dot" aria-hidden="true"></span>
+      <strong>Ajay Chakravarthy G</strong>
+      <span class="mono">· Chennai, IN</span>
+    </div>
+    <button class="tbtn" id="theme" type="button">Theme</button>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="shell hero-grid">
+    <div>
+      <p class="eyebrow">Cloud &amp; DevOps Engineer · Fintech</p>
+      <h1>I ship banking software <em>on rails.</em></h1>
+      <p class="hero-role">Pipelines, containers and security gates for a digital banking platform used by multiple retail banks.</p>
+      <p class="hero-sum">
+        Around 2.5 years building CI/CD automation inside a product fintech company &mdash; GitLab pipelines for
+        microservices, Docker and Kubernetes delivery, and DevSecOps scanning baked into every merge request.
+        Started as a trainee in 2024; promoted twice since.
+      </p>
+      <div class="hero-links">
+        <a class="link primary" href="mailto:ajay.chakravarthyg@gmail.com">ajay.chakravarthyg@gmail.com</a>
+        <a class="link" href="https://www.linkedin.com/in/g-ajay-chakravarthy/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="link" href="tel:+918667007330">+91 86670 07330</a>
+      </div>
+    </div>
+
+    <div class="yaml">
+      <div class="yaml-bar">
+        <i></i><i></i><i></i>
+        <span>ajay-chakravarthy.gitlab-ci.yml</span>
+      </div>
+<pre><span class="c"># the short version</span>
+<span class="k">stages</span>: [ build, test, scan, deploy ]
+
+<span class="k">engineer</span>:
+  <span class="k">based</span>:      Chennai, India
+  <span class="k">experience</span>: 28 months
+  <span class="k">domain</span>:     fintech / digital banking
+  <span class="k">runs_on</span>:    [ gitlab-ci, kubernetes, aws ]
+  <span class="k">reach</span>:      ajay.chakravarthyg@gmail.com</pre>
+    </div>
+  </div>
+</header>
+
+<div class="shell">
+  <div class="stats">
+    <div class="stat"><b>28 mo</b><span>in DevOps, all at one product company</span></div>
+    <div class="stat"><b>10+</b><span>banking repos on automated CI/CD</span></div>
+    <div class="stat"><b>15+</b><span>downstream pipelines from one trigger</span></div>
+    <div class="stat"><b>30%</b><span>less manual review time with an AI bot</span></div>
+  </div>
+</div>
+
+<div class="shell main">
+  <nav class="rail" aria-label="Sections">
+    <a href="#pipeline" class="on">Pipeline</a>
+    <a href="#work">Selected work</a>
+    <a href="#toolchain">Toolchain</a>
+    <a href="#credentials">Credentials</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="col">
+
+    <!-- ============ PIPELINE ============ -->
+    <section id="pipeline">
+      <div class="sec-head">
+        <h2>The pipeline so far</h2>
+        <span class="rule"></span>
+        <span class="eyebrow">Tagit Pvt Ltd · 2024 &rarr; now</span>
+      </div>
+
+      <div class="pipe">
+
+        <article class="stage">
+          <div class="track">
+            <span class="node done" aria-hidden="true"></span>
+            <span class="wire" aria-hidden="true"></span>
+          </div>
+          <div class="stage-body">
+            <div class="stage-top">
+              <span class="stage-idx">Stage 01</span>
+              <h3>Trainee DevOps Engineer</h3>
+            </div>
+            <div class="stage-meta">
+              <span>May 2024 &mdash; Mar 2025</span>
+              <span>11 months</span>
+              <span>Chennai, India</span>
+            </div>
+            <ul class="jobs">
+              <li>
+                <span class="tag">build:mobeix</span>
+                <p>Built CI/CD pipelines for <strong>10+ Mobeix digital banking component repositories</strong> powering MCB, MRB and MFB &mdash; automating build, test and artifact upload to Nexus in YAML.</p>
+              </li>
+              <li>
+                <span class="tag">migrate:gitlab</span>
+                <p>Migrated the Mobeix platform <strong>off Jenkins onto GitLab</strong>, redesigning the workflows in YAML and building a centralised trigger that orchestrates <strong>15+ downstream pipelines</strong>.</p>
+              </li>
+              <li>
+                <span class="tag">release:nexus</span>
+                <p>Implemented artifact lifecycle management and structured release promotion through Nexus Repository.</p>
+              </li>
+              <li>
+                <span class="tag">standardise</span>
+                <p>Raised deployment reliability and cut manual operational effort by standardising how every repo does CI/CD.</p>
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="stage">
+          <div class="track">
+            <span class="node done" aria-hidden="true"></span>
+            <span class="wire" aria-hidden="true"></span>
+          </div>
+          <div class="stage-body">
+            <div class="stage-top">
+              <span class="stage-idx">Stage 02</span>
+              <h3>Associate DevOps Engineer</h3>
+            </div>
+            <div class="stage-meta">
+              <span>Apr 2025 &mdash; May 2026</span>
+              <span>14 months</span>
+              <span>Chennai, India</span>
+            </div>
+            <ul class="jobs">
+              <li>
+                <span class="tag">pipelines</span>
+                <p>Designed and optimised GitLab CI/CD pipelines for backend services and web applications, improving deployment efficiency.</p>
+              </li>
+              <li>
+                <span class="tag">mobile:android</span>
+                <p>Automated <strong>Android and iOS build and distribution</strong> with Gradle, xcodebuild and CocoaPods, delivering builds straight to testers via Firebase App Distribution.</p>
+              </li>
+              <li>
+                <span class="tag">deploy:gitops</span>
+                <p>Scheduled nightly builds and deployed to Kubernetes with <strong>Argo CD</strong>, following GitOps principles.</p>
+              </li>
+              <li>
+                <span class="tag">infra:rke2</span>
+                <p>Managed on-premises Kubernetes clusters provisioned with Rancher RKE2 for containerised workloads.</p>
+              </li>
+              <li>
+                <span class="tag">scan:mend</span>
+                <p>Integrated MEND CLI vulnerability scanning into CI, generating the security reports that ship with client deliveries.</p>
+              </li>
+              <li>
+                <span class="tag">quality:gate</span>
+                <p>Configured JaCoCo coverage for Java services and surfaced it in SonarQube to enforce quality gates.</p>
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="stage">
+          <div class="track">
+            <span class="node run" aria-hidden="true"></span>
+          </div>
+          <div class="stage-body">
+            <div class="stage-top">
+              <span class="stage-idx">Stage 03</span>
+              <h3>DevOps Engineer</h3>
+            </div>
+            <div class="stage-meta">
+              <span>Jun 2026 &mdash; Present</span>
+              <span class="now">running</span>
+              <span>Chennai, India</span>
+            </div>
+            <ul class="jobs">
+              <li>
+                <span class="tag">ai:review-bot</span>
+                <p>Built an <strong>AI Code Review Bot</strong> (Anthropic Claude + Gemini) that posts structured discussion threads on GitLab MRs, cutting manual review time and defect escape rate by 30%.</p>
+              </li>
+              <li>
+                <span class="tag">devsecops</span>
+                <p>Implemented scanning across the board &mdash; OWASP Dependency-Check for SCA, OWASP ZAP for DAST, and Docker Scout for container vulnerabilities.</p>
+              </li>
+              <li>
+                <span class="tag">containers</span>
+                <p>Automated Docker and Podman deployments with Bash tooling that provisions environments and orchestrates services.</p>
+              </li>
+              <li>
+                <span class="tag">perf:pipeline</span>
+                <p>Optimised pipeline runtime through modular architecture, parallel execution and smarter caching.</p>
+              </li>
+              <li>
+                <span class="tag">release:qa-prod</span>
+                <p>Automated build, test and deployment workflows across QA and production using Docker and Nexus.</p>
+              </li>
+              <li>
+                <span class="tag">infra:httpd</span>
+                <p>Configured Apache HTTPD proxy passes to serve WSL-hosted applications under local domains.</p>
+              </li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ WORK ============ -->
+    <section id="work">
+      <div class="sec-head">
+        <h2>Selected work</h2>
+        <span class="rule"></span>
+      </div>
+      <div class="work">
+
+        <article class="card lead">
+          <div class="card-top">
+            <h3>AI Code Review Bot for GitLab</h3>
+            <span class="impact">&minus;30% review time</span>
+          </div>
+          <p>A reviewer that never gets tired. It reads merge request diffs, reasons over them with Anthropic Claude and Gemini, and posts structured discussion threads back onto the MR &mdash; so humans arrive at a review that already has the obvious things flagged.</p>
+          <div class="chips"><span class="chip">Claude</span><span class="chip">Gemini</span><span class="chip">GitLab API</span><span class="chip">Python</span><span class="chip">CI/CD</span></div>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <h3>Jenkins &rarr; GitLab platform migration</h3>
+            <span class="impact">15+ pipelines</span>
+          </div>
+          <p>Moved the entire Mobeix banking platform off Jenkins. Every workflow was rebuilt in YAML, and a single centralised trigger now fans out to 15+ downstream pipelines &mdash; turning a manual release scramble into one coordinated run.</p>
+          <div class="chips"><span class="chip">GitLab CI/CD</span><span class="chip">YAML</span><span class="chip">Nexus</span><span class="chip">Maven</span></div>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <h3>Mobile release automation</h3>
+            <span class="impact">iOS + Android</span>
+          </div>
+          <p>Android and iOS builds produced and signed in CI with Gradle, xcodebuild and CocoaPods, then pushed to testers through Firebase App Distribution &mdash; no laptop-in-the-loop builds.</p>
+          <div class="chips"><span class="chip">Gradle</span><span class="chip">xcodebuild</span><span class="chip">CocoaPods</span><span class="chip">Firebase</span></div>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <h3>DevSecOps gate for banking releases</h3>
+            <span class="impact">SCA · DAST · SBOM</span>
+          </div>
+          <p>Security moved left into the pipeline: OWASP Dependency-Check and MEND CLI for dependencies, OWASP ZAP for running applications, Docker Scout for images, SonarQube with JaCoCo coverage holding the quality gate. Reports come out client-ready.</p>
+          <div class="chips"><span class="chip">OWASP ZAP</span><span class="chip">Dependency-Check</span><span class="chip">Docker Scout</span><span class="chip">SonarQube</span><span class="chip">Cosign</span></div>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <h3>GitOps delivery on on-prem Kubernetes</h3>
+            <span class="impact">Nightly to prod path</span>
+          </div>
+          <p>Self-managed Rancher RKE2 clusters with Longhorn storage, reconciled by Argo CD from Git. Nightly builds land in the cluster automatically, so the deployed state and the repository never drift apart.</p>
+          <div class="chips"><span class="chip">Kubernetes</span><span class="chip">Argo CD</span><span class="chip">Rancher RKE2</span><span class="chip">Longhorn</span><span class="chip">Podman</span></div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ TOOLCHAIN ============ -->
+    <section id="toolchain">
+      <div class="sec-head">
+        <h2>Toolchain</h2>
+        <span class="rule"></span>
+      </div>
+      <div class="tools">
+        <div class="tool-row">
+          <h3>Containers &amp; orchestration</h3>
+          <div><span>Docker</span><span>Podman</span><span>Kubernetes</span><span>Argo CD</span><span>Rancher RKE2</span><span>Longhorn</span></div>
+        </div>
+        <div class="tool-row">
+          <h3>CI/CD &amp; version control</h3>
+          <div><span>GitLab CI/CD</span><span>GitHub Actions</span><span>Jenkins</span><span>Git</span></div>
+        </div>
+        <div class="tool-row">
+          <h3>Build &amp; artifacts</h3>
+          <div><span>Maven</span><span>Gradle</span><span>Nexus</span></div>
+        </div>
+        <div class="tool-row">
+          <h3>Infrastructure as code</h3>
+          <div><span>Terraform</span><span>Ansible</span><span>Bash</span></div>
+        </div>
+        <div class="tool-row">
+          <h3>AWS</h3>
+          <div><span>EC2</span><span>IAM</span><span>S3</span><span>VPC</span><span>CloudFront</span><span>CloudWatch</span><span>SNS</span><span>SQS</span><span>DynamoDB</span><span>CodeDeploy</span><span>Route 53</span><span>ECS</span><span>RDS</span></div>
+        </div>
+        <div class="tool-row">
+          <h3>Observability</h3>
+          <div><span>Prometheus</span><span>Grafana</span><span>Elasticsearch</span><span>Kibana</span></div>
+        </div>
+        <div class="tool-row">
+          <h3>DevSecOps</h3>
+          <div><span>OWASP Dependency-Check</span><span>OWASP ZAP</span><span>Docker Scout</span><span>MEND CLI</span><span>SonarQube</span><span>JaCoCo</span><span>Cosign</span><span>SBOM</span><span>SAST</span><span>DAST</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CREDENTIALS ============ -->
+    <section id="credentials">
+      <div class="sec-head">
+        <h2>Credentials</h2>
+        <span class="rule"></span>
+      </div>
+      <div class="creds">
+        <div class="cred">
+          <div>
+            <h3>AWS Certified Solutions Architect &ndash; Associate</h3>
+            <p class="mono">Validation S83XWE11WEF11DWZ &middot; aws.amazon.com/verification</p>
+          </div>
+          <span class="when">Certified</span>
+        </div>
+        <div class="cred">
+          <div>
+            <h3>Kubernetes for the Absolute Beginners &mdash; Hands-on</h3>
+            <p>Udemy, KodeKloud</p>
+          </div>
+          <span class="when">Completed</span>
+        </div>
+        <div class="cred">
+          <div>
+            <h3>Bachelor of Engineering</h3>
+            <p>PSG Institute of Technology and Applied Research, Coimbatore</p>
+          </div>
+          <span class="when">2017 &ndash; 2021</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact">
+      <div class="contact">
+        <p class="eyebrow">Next stage</p>
+        <h2>Got a pipeline that needs fixing?</h2>
+        <p>I&rsquo;m in Chennai and happy to talk about CI/CD, Kubernetes delivery or getting security checks into your build &mdash; drop a line and I&rsquo;ll reply.</p>
+        <div class="hero-links">
+          <a class="link primary" href="mailto:ajay.chakravarthyg@gmail.com">Email me</a>
+          <a class="link" href="https://www.linkedin.com/in/g-ajay-chakravarthy/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="link" href="tel:+918667007330">+91 86670 07330</a>
+        </div>
+      </div>
+      <footer>
+        <span>Ajay Chakravarthy G &middot; Cloud | DevOps Engineer</span>
+        <span>Chennai, India</span>
+      </footer>
+    </section>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  var btn  = document.getElementById('theme');
+  function get(){ try{ return localStorage.getItem('ajay-theme'); }catch(e){ return null; } }
+  function resolved(){
+    var s = root.getAttribute('data-theme');
+    if(s) return s;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  var saved = get();
+  if(saved === 'dark' || saved === 'light') root.setAttribute('data-theme', saved);
+  btn.addEventListener('click', function(){
+    var next = resolved() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try{ localStorage.setItem('ajay-theme', next); }catch(e){}
+  });
+
+  var links = Array.prototype.slice.call(document.querySelectorAll('.rail a'));
+  var secs  = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(!en.isIntersecting) return;
+        var i = secs.indexOf(en.target);
+        if(i < 0) return;
+        links.forEach(function(a, j){ a.classList.toggle('on', i === j); });
+      });
+    }, { rootMargin: '-15% 0px -70% 0px' });
+    secs.forEach(function(s){ if(s) io.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>
