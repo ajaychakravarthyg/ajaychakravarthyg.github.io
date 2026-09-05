@@ -1,0 +1,31 @@
+# Portfolio — Ajay Chakravarthy G
+
+Personal portfolio site for **Ajay Chakravarthy G**, Cloud | DevOps Engineer based in Chennai, India.
+
+The career timeline is rendered as a CI/CD pipeline — three progressive roles at Tagit Pvt Ltd
+(Trainee → Associate → DevOps Engineer) as pipeline stages, with each achievement as a job row.
+
+## Stack
+
+Single static `index.html`. No build step, no dependencies, no framework.
+Fonts (Archivo, IBM Plex Sans, IBM Plex Mono) load from Google Fonts; everything else is inline.
+
+- Light and dark themes via CSS custom properties, with a manual toggle persisted to `localStorage`
+- Respects `prefers-color-scheme` and `prefers-reduced-motion`
+- Responsive down to 320px
+
+## Local preview
+
+```bash
+python3 -m http.server 8899
+# http://localhost:8899
+```
+
+## Deploy
+
+Pushes to `main` deploy automatically to GitHub Pages via `.github/workflows/deploy.yml`.
+
+## Contact
+
+- Email — ajay.chakravarthyg@gmail.com
+- LinkedIn — https://www.linkedin.com/in/g-ajay-chakravarthy/
