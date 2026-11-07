@@ -13,7 +13,7 @@
 <meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://ajaychakravarthyg.github.io/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%230F2A5C%27/%3E%3Ctext x=%2732%27 y=%2743%27 font-family=%27Arial,sans-serif%27 font-size=%2728%27 font-weight=%27700%27 fill=%27white%27 text-anchor=%27middle%27%3EAC%3C/text%3E%3C/svg%3E">
-<script>try{var t=localStorage.getItem('ajay-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('ajay-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
@@ -104,7 +104,7 @@ strong{color:var(--ink);font-weight:600}
 .stat{padding:22px 20px;border-left:1px solid var(--line)}
 .stat:first-child{border-left:0}
 .stat b{display:block;font:800 30px/1.1 var(--f-head);color:var(--ink);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.stat span{display:block;font-size:13.5px;color:var(--muted);margin-top:6px;line-height:1.45}
+.stat > span{display:block;font-size:13.5px;color:var(--muted);margin-top:6px;line-height:1.45}
 
 /* ---------- sections ---------- */
 section.block{padding:72px 0}
@@ -218,6 +218,95 @@ section.block + section.block{border-top:1px solid var(--line)}
 footer{padding:32px 0 48px;color:var(--muted);font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
+
+/* ---------- journey ---------- */
+.journey{list-style:none;position:relative;margin:36px 0 0;padding-left:64px;--fill:0}
+.journey::before,.journey::after{content:"";position:absolute;left:21px;top:8px;bottom:8px;width:2px;border-radius:2px}
+.journey::before{background:var(--line)}
+.journey::after{background:linear-gradient(var(--accent),var(--ok));transform-origin:top;transform:scaleY(var(--fill));transition:transform .15s linear}
+.ch{position:relative;margin-bottom:16px}
+.ch-node{position:absolute;left:-64px;top:18px;width:44px;height:44px;border-radius:50%;background:var(--surface);border:2px solid var(--line);display:grid;place-items:center;font:600 13px var(--f-mono);color:var(--muted);z-index:1;transition:border-color .4s,color .4s,background .4s,box-shadow .4s}
+.ch.lit .ch-node{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 12%,transparent)}
+.ch-card{padding:22px 24px;transition:transform .25s ease,box-shadow .25s ease,border-color .25s}
+.ch-card:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--accent) 30%,var(--line))}
+.ch-card h3{font-size:18px;font-weight:700;margin-bottom:8px}
+.ch-card p{font-size:15px}
+.ch-logos{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.lg{display:inline-flex;align-items:center;gap:8px;padding:4px 10px 4px 4px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);font-size:13px;font-weight:500;color:var(--ink);transition:transform .2s,border-color .2s}
+.lg:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
+.lg-ic{width:26px;height:26px;border-radius:50%;background:#fff;border:1px solid var(--line);display:grid;place-items:center;overflow:hidden;flex:none}
+.lg-ic img{width:16px;height:16px}
+.lg-ic .mono-ic{font-size:8.5px}
+.mono-ic{display:grid;place-items:center;width:100%;height:100%;border-radius:inherit;background:var(--m);color:#fff;font:700 10.5px var(--f-mono);letter-spacing:-.02em}
+.mono-ic.sm{width:20px;height:20px;border-radius:5px;font-size:8.5px;flex:none}
+
+/* ---------- live pipeline ---------- */
+.pipe-wrap{margin:48px 0 16px}
+.pipe-intro{margin-bottom:18px;max-width:640px}
+.pipe-intro h3{font-size:22px;font-weight:800;margin-bottom:6px}
+.pipe-intro p{font-size:15px;color:var(--muted)}
+.pipe{padding:0;overflow:hidden}
+.pipe-top{display:flex;align-items:center;gap:14px;padding:14px 20px;border-bottom:1px solid var(--line);flex-wrap:wrap;font-size:14px}
+.pipe-status{display:inline-flex;align-items:center;gap:7px;font:600 12.5px var(--f-body);padding:4px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);text-transform:lowercase}
+.pipe-status i{width:8px;height:8px;border-radius:50%;background:currentColor;animation:pulse 1.2s ease-in-out infinite}
+.pipe-status.ok{background:var(--ok-soft);color:var(--ok)}
+.pipe-status.ok i{animation:none}
+.pipe-id{color:var(--muted)}
+.pipe-id b{color:var(--ink)}
+.pipe-time{margin-left:auto;color:var(--muted);font-size:13px}
+.mono{font-family:var(--f-mono)}
+.stages{display:grid;grid-template-columns:repeat(7,minmax(128px,1fr));gap:0;overflow-x:auto;padding:18px 8px 20px;scrollbar-width:thin}
+.stage{padding:0 10px;position:relative}
+.stage + .stage::before{content:"";position:absolute;left:-6px;top:58px;width:12px;height:2px;background:var(--line)}
+.stage h4{font:500 12px var(--f-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:0 0 10px 4px}
+.job{display:block;padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:var(--surface);margin-bottom:8px;font-size:12.5px;color:var(--ink-2);transition:border-color .3s,background .3s,box-shadow .3s}
+.job img{width:16px;height:16px;flex:none;background:#fff;border-radius:4px;padding:1px}
+.jrow{display:flex;align-items:center;gap:7px;margin-bottom:6px}
+.job .jn{display:block;font:500 12px/1.35 var(--f-mono);color:var(--ink)}
+.job .jt{margin-left:auto;font-size:11px;color:var(--muted)}
+.st{width:16px;height:16px;border-radius:50%;border:2px dashed var(--muted);flex:none;opacity:.6}
+.job.run{border-color:color-mix(in srgb,var(--accent) 50%,var(--line));box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 12%,transparent)}
+.job.run .st{border:2px solid color-mix(in srgb,var(--accent) 25%,transparent);border-top-color:var(--accent);opacity:1;animation:spin .8s linear infinite}
+.job.ok{border-color:color-mix(in srgb,var(--ok) 40%,var(--line))}
+.job.ok .st{border:0;opacity:1;background:var(--ok) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m4.5 8.2 2.3 2.3 4.7-4.9' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat}
+.console{display:flex;align-items:center;gap:8px;padding:12px 20px;border-top:1px solid var(--line);background:#0B1220;color:#B8C4D9;font-size:12.5px;white-space:nowrap;overflow:hidden}
+.console .prompt{color:#3CCB95}
+.caret{width:7px;height:14px;background:#B8C4D9;animation:blink 1s steps(1) infinite;flex:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{50%{opacity:.35}}
+@keyframes blink{50%{opacity:0}}
+
+/* ---------- skills tiles ---------- */
+.sgroups{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.sgroup{padding:22px 24px}
+.sgroup h3{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:700;margin-bottom:16px}
+.sgroup h3 small{margin-left:auto;font:500 11.5px var(--f-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.g-logo{width:34px;height:22px;object-fit:contain;background:#fff;border-radius:5px;padding:2px 4px}
+.tools{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.tool{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-size:13.5px;font-weight:500;color:var(--ink);transition:transform .2s ease,border-color .2s,box-shadow .2s}
+.tool:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--accent) 35%,var(--line));box-shadow:var(--shadow)}
+.tool-ic{width:30px;height:30px;border-radius:8px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;flex:none;overflow:hidden}
+.tool-ic img{width:18px;height:18px}
+.sgroup.learning .tool{border-style:dashed}
+
+/* ---------- motion ---------- */
+.card{transition:transform .25s ease,box-shadow .25s ease,border-color .25s}
+.proj:hover,.role-card:hover,.cred:hover{transform:translateY(-3px);box-shadow:0 2px 4px rgba(14,23,38,.05),0 14px 34px rgba(14,23,38,.10)}
+.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .reveal.in{opacity:1;transform:none}
+.js .hero .rise{opacity:0;transform:translateY(16px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--i,0) * 90ms + 80ms)}
+.js .portrait{animation:portraitIn 1s cubic-bezier(.2,.7,.2,1) .15s both}
+.portrait-card{animation:floaty 6s ease-in-out 1.2s infinite}
+.status i{animation:ping 2s ease-out infinite}
+@keyframes rise{to{opacity:1;transform:none}}
+@keyframes portraitIn{from{opacity:0;transform:scale(.96) translateY(12px)}to{opacity:1;transform:none}}
+@keyframes floaty{50%{transform:translateY(-6px)}}
+@keyframes ping{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--ok) 45%,transparent)}100%{box-shadow:0 0 0 10px transparent}}
+.btn{transition:transform .15s ease,background .2s,border-color .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary:hover{box-shadow:0 6px 18px color-mix(in srgb,var(--accent) 35%,transparent)}
+.progress{position:fixed;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,var(--accent),var(--ok));transform-origin:left;transform:scaleX(var(--p,0));z-index:60}
+
 /* ---------- responsive ---------- */
 @media (max-width:1000px){
   .stats{grid-template-columns:repeat(3,1fr)}
@@ -226,6 +315,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   .impact,.creds{grid-template-columns:1fr 1fr}
 }
 @media (max-width:880px){
+  .sgroups{grid-template-columns:1fr}
   .nav-links{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--surface);border-bottom:1px solid var(--line);padding:10px 16px 16px;box-shadow:var(--shadow)}
   .nav-links.open{display:flex}
   .nav-links a{padding:12px}
@@ -241,6 +331,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   .skills{grid-template-columns:1fr}
 }
 @media (max-width:620px){
+  .journey{padding-left:50px}
+  .journey::before,.journey::after{left:16px}
+  .ch-node{left:-50px;width:34px;height:34px;font-size:11.5px}
+  .ch-card{padding:18px}
+  .pipe-time{margin-left:0}
   .wrap{padding:0 16px}
   .nav .btn-cv span{display:none}
   .stats{grid-template-columns:1fr 1fr}
@@ -257,8 +352,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   .glance dt{padding-bottom:0;border-top:1px solid var(--line)}
   .glance dd{border-top:0;padding-top:2px}
 }
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}.js .reveal,.js .hero .rise,.js .portrait{opacity:1!important;transform:none!important}}
 @media print{
+  .js .reveal,.js .hero .rise{opacity:1!important;transform:none!important}
+  .progress,.console{display:none!important}
   .nav,.cta,.contact .btn,.portrait-card{display:none!important}
   body{background:#fff}
   .card,.stats{box-shadow:none}
@@ -267,6 +364,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </style>
 </head>
 <body>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <a class="skip" href="#main">Skip to content</a>
 
 <!-- icon sprite -->
@@ -320,16 +418,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <span class="status"><i></i>Open to work · DevOps · Cloud · DevSecOps · SRE · Platform · Release · Infra</span>
-        <h1>Ajay Chakravarthy G</h1>
-        <p class="role">DevOps Engineer · GitLab CI/CD · Kubernetes · AWS · DevSecOps</p>
-        <p class="lead">I build and run the CI/CD pipelines, Kubernetes platforms and security checks behind digital banking products used by banks. I have 2.5+ years of experience at a product fintech company and was promoted twice in two years.</p>
-        <div class="hero-meta">
+        <span style="--i:0" class="rise status"><i></i>Open to work · DevOps · Cloud · DevSecOps · SRE · Platform · Release · Infra</span>
+        <h1 class="rise" style="--i:1">Ajay Chakravarthy G</h1>
+        <p style="--i:2" class="rise role">DevOps Engineer · GitLab CI/CD · Kubernetes · AWS · DevSecOps</p>
+        <p style="--i:3" class="rise lead">I build and run the CI/CD pipelines, Kubernetes platforms and security checks behind digital banking products used by banks. I have 2.5+ years of experience at a product fintech company and was promoted twice in two years.</p>
+        <div style="--i:4" class="rise hero-meta">
           <span><svg><use href="#i-pin"/></svg>Chennai, India</span>
           <span><svg><use href="#i-plane"/></svg>Open to Bangalore · Hyderabad · Coimbatore</span>
           <span><svg><use href="#i-brief"/></svg>DevOps Engineer at Tagit</span>
         </div>
-        <div class="cta">
+        <div style="--i:5" class="rise cta">
           <a class="btn btn-primary" href="AjayChakravarthyG_DevOps_CV.pdf" download><svg><use href="#i-dl"/></svg>Download CV</a>
           <a class="btn" href="mailto:ajay.chakravarthyg@gmail.com"><svg><use href="#i-mail"/></svg>Email me</a>
           <a class="btn" href="https://www.linkedin.com/in/g-ajay-chakravarthy/" target="_blank" rel="noopener"><svg><use href="#i-in"/></svg>LinkedIn</a>
@@ -345,13 +443,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       </div>
     </div>
 
-    <div class="stats" role="list">
-      <div class="stat" role="listitem"><b>2.5+ yrs</b><span>DevOps in product fintech</span></div>
-      <div class="stat" role="listitem"><b>2×</b><span>promoted in 2 years</span></div>
-      <div class="stat" role="listitem"><b>50+</b><span>developers using my CI templates</span></div>
-      <div class="stat" role="listitem"><b>15+</b><span>pipelines run from one central trigger</span></div>
-      <div class="stat" role="listitem"><b>70%</b><span>faster security scans</span></div>
-      <div class="stat" role="listitem"><b>80%</b><span>less manual code-review time</span></div>
+    <div class="stats reveal" role="list">
+      <div class="stat" role="listitem"><b><span class="count" data-to="2.5">2.5</span>+ yrs</b><span>DevOps in product fintech</span></div>
+      <div class="stat" role="listitem"><b><span class="count" data-to="2">2</span>×</b><span>promoted in 2 years</span></div>
+      <div class="stat" role="listitem"><b><span class="count" data-to="50">50</span>+</b><span>developers using my CI templates</span></div>
+      <div class="stat" role="listitem"><b><span class="count" data-to="15">15</span>+</b><span>pipelines run from one central trigger</span></div>
+      <div class="stat" role="listitem"><b><span class="count" data-to="70">70</span>%</b><span>faster security scans</span></div>
+      <div class="stat" role="listitem"><b><span class="count" data-to="80">80</span>%</b><span>less manual code-review time</span></div>
     </div>
   </div>
 </section>
@@ -359,14 +457,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <!-- ================= ABOUT ================= -->
 <section class="block" id="about">
   <div class="wrap">
-    <div class="sec-head"><div><p class="kicker">About</p><h2>Summary</h2></div></div>
+    <div class="sec-head reveal"><div><p class="kicker">About</p><h2>Summary</h2></div></div>
     <div class="about">
-      <div class="about-text">
+      <div class="about-text reveal">
         <p>I&rsquo;m a <strong>DevOps Engineer with 2.5+ years of hands-on experience</strong> in CI/CD automation at <strong>Tagit</strong>, a product-based fintech company. Banks use its Mobeix platform to run their digital banking apps.</p>
         <p>I build and improve <strong>GitLab CI/CD pipelines for microservices</strong>, ship containers with <strong>Docker and Kubernetes</strong>, and run the AWS infrastructure behind our CI (EC2, ECR, ELB, Aurora). Security checks are part of every pipeline I build, not something added at the end.</p>
         <p>I also help keep production running. I troubleshoot production servers, lead root cause analysis (RCA) after incidents, set up the monitoring alerts, and take on-call shifts for production, pre-prod and SIT environments. I coordinate releases with our development teams and with bank customers, from build to production rollout.</p>
       </div>
-      <aside class="card glance" aria-label="At a glance">
+      <aside class="card glance reveal" aria-label="At a glance">
         <h3>At a glance</h3>
         <dl>
           <dt>Current role</dt><dd>DevOps Engineer, Tagit</dd>
@@ -386,33 +484,33 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <!-- ================= ROLES ================= -->
 <section class="block" id="roles">
   <div class="wrap">
-    <div class="sec-head"><div><p class="kicker">Open to work</p><h2>Roles I&rsquo;m open to</h2></div><p>At Tagit I&rsquo;ve done hands-on work in each of these areas. Here is what each one has looked like in practice.</p></div>
+    <div class="sec-head reveal"><div><p class="kicker">Open to work</p><h2>Roles I&rsquo;m open to</h2></div><p>At Tagit I&rsquo;ve done hands-on work in each of these areas. Here is what each one has looked like in practice.</p></div>
     <div class="roles">
-      <article class="card role-card">
+      <article class="card role-card reveal">
         <h3><span><svg><use href="#i-pipe"/></svg></span>DevOps Engineer</h3>
         <p>Moved the Mobeix platform from Jenkins to GitLab CI/CD, built pipelines for 10+ microservice repos, and run one central trigger that drives 15+ downstream pipelines.</p>
       </article>
-      <article class="card role-card">
+      <article class="card role-card reveal">
         <h3><span><svg><use href="#i-cloud"/></svg></span>Cloud Engineer</h3>
         <p>Run AWS infrastructure: the GitLab Runner on EC2, ECR registries, Elastic Load Balancers for three applications, and Aurora databases with backups. AWS Certified Solutions Architect – Associate.</p>
       </article>
-      <article class="card role-card">
+      <article class="card role-card reveal">
         <h3><span><svg><use href="#i-shield"/></svg></span>DevSecOps Engineer</h3>
         <p>Built a security pipeline (Semgrep, SonarQube, Trivy) that scans only changed components and cut scan time by 70%. Also run Mend SCA reports for bank clients, Cosign image signing and SBOMs.</p>
       </article>
-      <article class="card role-card">
+      <article class="card role-card reveal">
         <h3><span><svg><use href="#i-pulse"/></svg></span>Site Reliability Engineer</h3>
         <p>Troubleshoot production servers and lead root cause analysis (RCA) after incidents. Set up Prometheus, Grafana and Kibana alerts, and provide on-call support for production, pre-prod and SIT.</p>
       </article>
-      <article class="card role-card">
+      <article class="card role-card reveal">
         <h3><span><svg><use href="#i-layers"/></svg></span>Platform Engineer</h3>
         <p>Built self-service GitLab CI templates used by 50+ developers, a shared CI runner platform, and one-command product installs with Claude Code skills.</p>
       </article>
-      <article class="card role-card">
+      <article class="card role-card reveal">
         <h3><span><svg><use href="#i-rocket"/></svg></span>Release Engineer</h3>
         <p>Coordinate release activities with development teams and bank customers. Manage artifact promotion through Nexus, nightly builds deployed with Argo CD, and iOS/Android builds sent to testers.</p>
       </article>
-      <article class="card role-card">
+      <article class="card role-card reveal">
         <h3><span><svg><use href="#i-server"/></svg></span>Infrastructure Engineer</h3>
         <p>Run on-prem Kubernetes clusters (Rancher RKE2) and Linux servers (Ubuntu, RHEL, CentOS), and set up full Docker and Podman stacks for each product environment.</p>
       </article>
@@ -423,9 +521,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <!-- ================= EXPERIENCE ================= -->
 <section class="block" id="experience">
   <div class="wrap">
-    <div class="sec-head"><div><p class="kicker">Experience</p><h2>Career history</h2></div><p>One company, three roles: from trainee to DevOps Engineer in two years.</p></div>
+    <div class="sec-head reveal"><div><p class="kicker">Experience</p><h2>My journey at Tagit</h2></div><p>The story behind the CV: how my work grew from security scans to running releases, environments and Kubernetes.</p></div>
 
-    <article class="card org">
+    <div class="card org reveal">
       <div class="org-head">
         <span class="org-logo"><img src="tagit.png" alt="Tagit logo" width="440" height="274"></span>
         <div>
@@ -434,65 +532,131 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         </div>
         <span class="tenure">May 2024 – Present</span>
       </div>
-
       <div class="ladder">
         <div class="rung"><small>May 2024 – Mar 2025</small><b>Trainee DevOps Engineer</b><em>11 months</em></div>
         <div class="rung"><small>Apr 2025 – May 2026</small><b>Associate DevOps Engineer</b><em>Promoted</em></div>
         <div class="rung now"><small>Jun 2026 – Present</small><b>DevOps Engineer</b><em>Promoted · Current</em></div>
       </div>
+    </div>
 
-      <div class="areas">
-        <div class="area">
-          <h4><span><svg><use href="#i-pipe"/></svg></span>CI/CD Platform</h4>
-          <ul>
-            <li>Moved the Mobeix platform from <strong>Jenkins to GitLab CI/CD</strong>, with one central trigger pipeline that runs <strong>15+ downstream pipelines</strong>.</li>
-            <li>Built CI/CD for <strong>10+ microservice repos</strong> behind three banking products, automating build, test and publishing to Nexus.</li>
-            <li>Designed modular, reusable GitLab CI templates that <strong>50+ developers</strong> use on their own.</li>
-            <li>Automated Android and iOS builds (Gradle, xcodebuild, CocoaPods) and delivered them to testers through Firebase App Distribution.</li>
-            <li>Found and fixed recurring build failures in iOS, Android, Angular and Java (Maven) pipelines, so developers' builds stay green.</li>
-            <li>Run <strong>release activities</strong> with development teams and <strong>bank customers</strong>: planning, building, promoting and rolling out each release.</li>
-          </ul>
-        </div>
-        <div class="area">
-          <h4><span><svg><use href="#i-cloud"/></svg></span>AWS</h4>
-          <ul>
-            <li>Built and maintain the <strong>GitLab Runner server</strong> on a high-memory Ubuntu EC2 instance, which runs parallel CI/CD jobs for 50+ developers.</li>
-            <li>Created container registries in <strong>Amazon ECR</strong> and automated building, tagging and pushing images from GitLab CI/CD.</li>
-            <li>Configured <strong>Elastic Load Balancers</strong> to route traffic for three applications.</li>
-            <li>Set up <strong>Amazon Aurora</strong> databases and manage how applications connect to them and how they are backed up.</li>
-          </ul>
-        </div>
-        <div class="area">
-          <h4><span><svg><use href="#i-k8s"/></svg></span>Kubernetes &amp; Production Support</h4>
-          <ul>
-            <li>Run on-prem <strong>Kubernetes clusters (Rancher RKE2)</strong> that host the Mobeix microservices and banking products.</li>
-            <li>Set up nightly builds that deploy to Kubernetes through <strong>Argo CD</strong>, following GitOps practice.</li>
-            <li>Set up <strong>Prometheus, Grafana and Kibana alerts</strong> for high CPU or memory, full disks, pod restarts and services going down, so problems are caught before they become outages.</li>
-            <li><strong>Troubleshoot production servers</strong> and run <strong>root cause analysis (RCA)</strong> after incidents, writing up the cause and the fix so it doesn't happen again.</li>
-            <li>Provide <strong>on-call and after-hours support</strong> for production, pre-prod and SIT environments, including nights and weekends.</li>
-          </ul>
-        </div>
-        <div class="area">
-          <h4><span><svg><use href="#i-shield"/></svg></span>DevSecOps</h4>
-          <ul>
-            <li>Built a security pipeline (Semgrep, SonarQube, Trivy) for a 5-component monorepo that scans only the components that changed, <strong>cutting scan time by 70%</strong>.</li>
-            <li>Added Mend SCA reports for bank clients, Cosign image signing, SBOM generation, and SonarQube quality gates with JaCoCo coverage.</li>
-          </ul>
-          <h4 style="margin-top:26px"><span><svg><use href="#i-spark"/></svg></span>AI-Assisted Engineering</h4>
-          <ul>
-            <li>Built an <strong>AI code-review bot</strong> (Claude and Gemini APIs) that posts structured review comments on GitLab merge requests, <strong>cutting manual review time by 80%</strong>.</li>
-            <li>Built Claude Code skills that install a whole product with <strong>one command</strong>. Each skill downloads the release package from Nexus and runs the shell scripts that set up the full Docker stack.</li>
-          </ul>
-        </div>
+    <ol class="journey" id="journey">
+        <li class="ch reveal">
+          <span class="ch-node" aria-hidden="true">01</span>
+          <div class="card ch-card">
+            <h3>Where I started: DevSecOps</h3>
+            <p>My first work at Tagit was security testing. I ran <strong>OWASP ZAP</strong> scans against our UAT and SIT application URLs, and <strong>OWASP Dependency-Check</strong> on our product and platform repositories, to catch vulnerable libraries early.</p>
+            <div class="ch-logos"><span class="lg"><span class="lg-ic"><img src="icons/zap.svg" alt="" loading="lazy"></span>OWASP ZAP</span><span class="lg"><span class="lg-ic"><img src="icons/owasp.svg" alt="" loading="lazy"></span>Dependency-Check</span></div>
+          </div>
+        </li>
+        <li class="ch reveal">
+          <span class="ch-node" aria-hidden="true">02</span>
+          <div class="card ch-card">
+            <h3>General CI/CD pipelines</h3>
+            <p>Next I built general pipelines for Java and Angular projects. Each one builds the code, publishes the JAR or WAR to <strong>Nexus</strong> with Maven or the Gradle wrapper, runs a <strong>SonarQube</strong> scan, and closes the pipeline.</p>
+            <div class="ch-logos"><span class="lg"><span class="lg-ic"><img src="icons/gitlab.svg" alt="" loading="lazy"></span>GitLab CI</span><span class="lg"><span class="lg-ic"><img src="icons/java.svg" alt="" loading="lazy"></span>Java</span><span class="lg"><span class="lg-ic"><img src="icons/angular.svg" alt="" loading="lazy"></span>Angular</span><span class="lg"><span class="lg-ic"><img src="icons/apachemaven.svg" alt="" loading="lazy"></span>Maven</span><span class="lg"><span class="lg-ic"><img src="icons/gradle.svg" alt="" loading="lazy"></span>Gradle</span><span class="lg"><span class="lg-ic"><img src="icons/sonatype.svg" alt="" loading="lazy"></span>Nexus</span><span class="lg"><span class="lg-ic"><img src="icons/sonarqubeserver.svg" alt="" loading="lazy"></span>SonarQube</span></div>
+          </div>
+        </li>
+        <li class="ch reveal">
+          <span class="ch-node" aria-hidden="true">03</span>
+          <div class="card ch-card">
+            <h3>Platform images and a modern repo structure</h3>
+            <p>We keep a <strong>separate repository for our platform images</strong>. Our product repos follow a modern DevOps structure: one repo builds the Java and Angular code, pushes artifacts to Nexus, runs the Sonar scan, then <strong>builds the container image and publishes it to the Docker and Nexus registries</strong>.</p>
+            <div class="ch-logos"><span class="lg"><span class="lg-ic"><img src="icons/docker.svg" alt="" loading="lazy"></span>Docker</span><span class="lg"><span class="lg-ic"><img src="icons/podman.svg" alt="" loading="lazy"></span>Podman</span><span class="lg"><span class="lg-ic"><img src="icons/sonatype.svg" alt="" loading="lazy"></span>Nexus registry</span><span class="lg"><span class="lg-ic"><img src="icons/sonarqubeserver.svg" alt="" loading="lazy"></span>SonarQube</span></div>
+          </div>
+        </li>
+        <li class="ch reveal">
+          <span class="ch-node" aria-hidden="true">04</span>
+          <div class="card ch-card">
+            <h3>Release activities with teams and bank clients</h3>
+            <p>I actively support every release. I work with the <strong>development and QA teams</strong> and with our <strong>bank clients</strong> to get each build verified, delivered and running in their environment.</p>
+            <div class="ch-logos"><span class="lg"><span class="lg-ic"><img src="icons/jira.svg" alt="" loading="lazy"></span>Jira</span><span class="lg"><span class="lg-ic"><img src="icons/confluence.svg" alt="" loading="lazy"></span>Confluence</span><span class="lg"><span class="lg-ic"><img src="icons/gitlab.svg" alt="" loading="lazy"></span>GitLab</span></div>
+          </div>
+        </li>
+        <li class="ch reveal">
+          <span class="ch-node" aria-hidden="true">05</span>
+          <div class="card ch-card">
+            <h3>Product setup across environments</h3>
+            <p>Then I moved into setting up our product itself: for <strong>new project onboarding</strong>, in <strong>dev environments</strong>, and for some projects in <strong>UAT and SIT</strong>. I wrote the setup documentation for each one.</p>
+            <div class="ch-logos"><span class="lg"><span class="lg-ic"><img src="icons/linux.svg" alt="" loading="lazy"></span>Linux</span><span class="lg"><span class="lg-ic"><img src="icons/redhat.svg" alt="" loading="lazy"></span>RHEL</span><span class="lg"><span class="lg-ic"><img src="icons/ubuntu.svg" alt="" loading="lazy"></span>Ubuntu</span><span class="lg"><span class="lg-ic"><img src="icons/docker.svg" alt="" loading="lazy"></span>Docker</span><span class="lg"><span class="lg-ic"><img src="icons/confluence.svg" alt="" loading="lazy"></span>Docs</span></div>
+          </div>
+        </li>
+        <li class="ch reveal">
+          <span class="ch-node" aria-hidden="true">06</span>
+          <div class="card ch-card">
+            <h3>Troubleshooting with clients and teams</h3>
+            <p>I take part in troubleshooting <strong>with bank clients</strong> and <strong>internally with the development team</strong>, and I fix CI/CD problems for the dev and QA teams so their pipelines keep moving.</p>
+            <div class="ch-logos"><span class="lg"><span class="lg-ic"><img src="icons/gnubash.svg" alt="" loading="lazy"></span>Bash</span><span class="lg"><span class="lg-ic"><img src="icons/elasticsearch.svg" alt="" loading="lazy"></span>Elasticsearch</span><span class="lg"><span class="lg-ic"><img src="icons/kibana.svg" alt="" loading="lazy"></span>Kibana</span><span class="lg"><span class="lg-ic"><img src="icons/grafana.svg" alt="" loading="lazy"></span>Grafana</span></div>
+          </div>
+        </li>
+        <li class="ch reveal">
+          <span class="ch-node" aria-hidden="true">07</span>
+          <div class="card ch-card">
+            <h3>DevSecOps, built into every pipeline</h3>
+            <p>Security came back, this time as part of CI/CD. I added <strong>Mend</strong>, <strong>Semgrep</strong>, <strong>Trivy</strong> and <strong>OSV</strong> scanning, <strong>SBOM</strong> generation and <strong>Cosign</strong> image signing, plus <strong>JaCoCo</strong> code coverage feeding SonarQube.</p>
+            <div class="ch-logos"><span class="lg"><span class="lg-ic"><b class="mono-ic" style="--m:#FF6A00">M</b></span>Mend</span><span class="lg"><span class="lg-ic"><b class="mono-ic" style="--m:#1B9C85">SG</b></span>Semgrep</span><span class="lg"><span class="lg-ic"><img src="icons/trivy.svg" alt="" loading="lazy"></span>Trivy</span><span class="lg"><span class="lg-ic"><b class="mono-ic" style="--m:#4285F4">OSV</b></span>OSV</span><span class="lg"><span class="lg-ic"><b class="mono-ic" style="--m:#6B46C1">SBOM</b></span>SBOM</span><span class="lg"><span class="lg-ic"><img src="icons/sigstore.svg" alt="" loading="lazy"></span>Cosign</span><span class="lg"><span class="lg-ic"><b class="mono-ic" style="--m:#B5292D">JC</b></span>JaCoCo</span></div>
+          </div>
+        </li>
+        <li class="ch reveal">
+          <span class="ch-node" aria-hidden="true">08</span>
+          <div class="card ch-card">
+            <h3>Nightly environments on Kubernetes</h3>
+            <p>On Kubernetes, I set up our product in <strong>nightly build environments with Argo CD</strong>. The pipeline runs at night and builds fresh images, and Argo CD deploys the updated images to the environment.</p>
+            <div class="ch-logos"><span class="lg"><span class="lg-ic"><img src="icons/kubernetes.svg" alt="" loading="lazy"></span>Kubernetes</span><span class="lg"><span class="lg-ic"><img src="icons/argocd.svg" alt="" loading="lazy"></span>Argo CD</span><span class="lg"><span class="lg-ic"><img src="icons/rancher.svg" alt="" loading="lazy"></span>Rancher RKE2</span><span class="lg"><span class="lg-ic"><img src="icons/docker.svg" alt="" loading="lazy"></span>Docker</span></div>
+          </div>
+        </li>
+        <li class="ch reveal">
+          <span class="ch-node" aria-hidden="true">09</span>
+          <div class="card ch-card">
+            <h3>The AI era</h3>
+            <p>I built an <strong>AI chatbot in Python</strong> with backend APIs powered by <strong>Google Gemini and AWS Bedrock</strong>, and an AI code-review bot that comments on GitLab merge requests.</p>
+            <div class="ch-logos"><span class="lg"><span class="lg-ic"><img src="icons/python.svg" alt="" loading="lazy"></span>Python</span><span class="lg"><span class="lg-ic"><img src="icons/googlegemini.svg" alt="" loading="lazy"></span>Gemini</span><span class="lg"><span class="lg-ic"><img src="icons/aws.svg" alt="" loading="lazy"></span>AWS Bedrock</span><span class="lg"><span class="lg-ic"><img src="icons/claude.svg" alt="" loading="lazy"></span>Claude</span></div>
+          </div>
+        </li>
+    </ol>
+
+    <!-- live pipeline -->
+    <div class="pipe-wrap reveal" id="pipeline">
+      <div class="pipe-intro">
+        <p class="kicker">How a product repo ships</p>
+        <h3>The pipeline I build, running live</h3>
+        <p>This is the shape of a nightly product pipeline: build, quality and security checks, publish, sign, and deploy with Argo CD.</p>
       </div>
-    </article>
+      <div class="card pipe" aria-label="Animated CI/CD pipeline demo">
+        <div class="pipe-top">
+          <span class="pipe-status" id="pStatus"><i></i><span>running</span></span>
+          <span class="pipe-id">Pipeline <b>#48213</b> · <span class="mono">main</span> · nightly schedule 01:00 IST</span>
+          <span class="pipe-time mono" id="pTime">00:00</span>
+        </div>
+        <div class="stages" id="stages">
+          <div class="stage"><h4>build</h4>
+            <div class="job" data-d="1600"><div class="jrow"><span class="st"></span><img src="icons/apachemaven.svg" alt=""><span class="jt mono">0s</span></div><span class="jn">maven-build</span></div>
+            <div class="job" data-d="1400"><div class="jrow"><span class="st"></span><img src="icons/angular.svg" alt=""><span class="jt mono">0s</span></div><span class="jn">angular-build</span></div></div>
+          <div class="stage"><h4>test</h4>
+            <div class="job" data-d="1300"><div class="jrow"><span class="st"></span><b class="mono-ic sm" style="--m:#B5292D">JC</b><span class="jt mono">0s</span></div><span class="jn">unit-tests · jacoco</span></div></div>
+          <div class="stage"><h4>quality</h4>
+            <div class="job" data-d="1200"><div class="jrow"><span class="st"></span><img src="icons/sonarqubeserver.svg" alt=""><span class="jt mono">0s</span></div><span class="jn">sonarqube-scan</span></div></div>
+          <div class="stage"><h4>security</h4>
+            <div class="job" data-d="1100"><div class="jrow"><span class="st"></span><b class="mono-ic sm" style="--m:#1B9C85">SG</b><span class="jt mono">0s</span></div><span class="jn">semgrep-sast</span></div>
+            <div class="job" data-d="1300"><div class="jrow"><span class="st"></span><b class="mono-ic sm" style="--m:#FF6A00">M</b><span class="jt mono">0s</span></div><span class="jn">mend-sca · osv</span></div></div>
+          <div class="stage"><h4>publish</h4>
+            <div class="job" data-d="1000"><div class="jrow"><span class="st"></span><img src="icons/sonatype.svg" alt=""><span class="jt mono">0s</span></div><span class="jn">nexus-publish</span></div></div>
+          <div class="stage"><h4>image</h4>
+            <div class="job" data-d="1500"><div class="jrow"><span class="st"></span><img src="icons/docker.svg" alt=""><span class="jt mono">0s</span></div><span class="jn">docker-build</span></div>
+            <div class="job" data-d="1100"><div class="jrow"><span class="st"></span><img src="icons/trivy.svg" alt=""><span class="jt mono">0s</span></div><span class="jn">trivy · sbom</span></div>
+            <div class="job" data-d="800"><div class="jrow"><span class="st"></span><img src="icons/sigstore.svg" alt=""><span class="jt mono">0s</span></div><span class="jn">cosign-sign</span></div></div>
+          <div class="stage"><h4>deploy</h4>
+            <div class="job" data-d="1600"><div class="jrow"><span class="st"></span><img src="icons/argocd.svg" alt=""><span class="jt mono">0s</span></div><span class="jn">argocd-sync · nightly</span></div></div>
+        </div>
+        <div class="console mono" id="console" aria-hidden="true"><span class="prompt">$</span> <span id="cLine">waiting for runner…</span><span class="caret"></span></div>
+      </div>
+    </div>
 
     <div class="mini-tl">
-      <div class="card mini">
+      <div class="card mini reveal">
         <span class="yr">2021 – 2023</span>
         <div><h4>Career break</h4><p>Took time off to support my family through an unexpected situation.</p></div>
       </div>
-      <div class="card mini">
+      <div class="card mini reveal">
         <span class="yr">2017 – 2021</span>
         <img class="mini-logo" src="psg-itech.png" alt="PSG iTech crest" width="200" height="200">
         <div><h4>Bachelor of Engineering</h4><p>PSG Institute of Technology and Applied Research, Coimbatore</p></div>
@@ -504,39 +668,39 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <!-- ================= IMPACT ================= -->
 <section class="block" id="impact">
   <div class="wrap">
-    <div class="sec-head"><div><p class="kicker">Impact</p><h2>Selected work</h2></div><p>Measurable results from projects I designed and delivered.</p></div>
+    <div class="sec-head reveal"><div><p class="kicker">Impact</p><h2>Selected work</h2></div><p>Measurable results from projects I designed and delivered.</p></div>
     <div class="impact">
-      <article class="card proj">
+      <article class="card proj reveal">
         <span class="metric">−80%</span><span class="metric-l">manual code-review time</span>
         <h3>AI code-review bot for GitLab</h3>
         <p>Reads merge request changes, reviews them with the Claude and Gemini APIs, and posts structured comments on the MR, so human reviewers start with the obvious issues already flagged.</p>
         <div class="tags"><span class="tag">Claude API</span><span class="tag">Gemini API</span><span class="tag">GitLab API</span><span class="tag">Python</span></div>
       </article>
-      <article class="card proj">
+      <article class="card proj reveal">
         <span class="metric">−70%</span><span class="metric-l">security scan time</span>
         <h3>Security pipeline that scans only what changed</h3>
         <p>Works out which of the five monorepo components changed and runs Semgrep, SonarQube and Trivy only on those, instead of scanning everything on every commit.</p>
         <div class="tags"><span class="tag">Semgrep</span><span class="tag">SonarQube</span><span class="tag">Trivy</span><span class="tag">GitLab CI</span></div>
       </article>
-      <article class="card proj">
+      <article class="card proj reveal">
         <span class="metric">15+</span><span class="metric-l">downstream pipelines</span>
         <h3>Jenkins → GitLab CI/CD migration</h3>
         <p>Moved the whole Mobeix banking platform off Jenkins. One central trigger now coordinates 15+ downstream pipelines in a single run.</p>
         <div class="tags"><span class="tag">GitLab CI/CD</span><span class="tag">YAML</span><span class="tag">Nexus</span><span class="tag">Maven</span></div>
       </article>
-      <article class="card proj">
+      <article class="card proj reveal">
         <span class="metric">50+</span><span class="metric-l">developers using it</span>
         <h3>Reusable GitLab CI templates</h3>
         <p>Modular pipeline templates that product teams set up themselves. Every repo builds, tests and publishes the same way, without a DevOps ticket.</p>
         <div class="tags"><span class="tag">GitLab CI</span><span class="tag">GitLab Runner</span><span class="tag">EC2</span></div>
       </article>
-      <article class="card proj">
+      <article class="card proj reveal">
         <span class="metric">1</span><span class="metric-l">command to install a product</span>
         <h3>Automated product installs</h3>
         <p>Claude Code skills that download a release from Nexus and set up the full Docker stack, turning a long manual install into a single command.</p>
         <div class="tags"><span class="tag">Claude Code</span><span class="tag">Docker</span><span class="tag">Bash</span><span class="tag">Nexus</span></div>
       </article>
-      <article class="card proj">
+      <article class="card proj reveal">
         <span class="metric">24×7</span><span class="metric-l">production coverage</span>
         <h3>Monitoring &amp; on-call for banking services</h3>
         <p>Prometheus, Grafana and Kibana alerts on production servers, plus after-hours on-call for production, pre-prod and SIT environments.</p>
@@ -549,24 +713,48 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <!-- ================= SKILLS ================= -->
 <section class="block" id="skills">
   <div class="wrap">
-    <div class="sec-head"><div><p class="kicker">Skills</p><h2>Technical skills</h2></div><p>Highlighted skills are the ones I use every day.</p></div>
-    <div class="skills">
-      <div class="card skill"><h3>CI/CD</h3><div class="chips">
-        <span class="chip key">GitLab CI/CD</span><span class="chip key">GitLab Runner</span><span class="chip">Jenkins</span><span class="chip">GitHub Actions</span><span class="chip key">Argo CD (GitOps)</span><span class="chip">Maven</span><span class="chip">Gradle</span><span class="chip">Nexus</span></div></div>
-      <div class="card skill"><h3>Containers &amp; Orchestration</h3><div class="chips">
-        <span class="chip key">Docker</span><span class="chip">Podman</span><span class="chip key">Kubernetes</span><span class="chip">Rancher RKE2</span></div></div>
-      <div class="card skill"><h3>AWS</h3><div class="chips">
-        <span class="chip key">EC2</span><span class="chip key">ECR</span><span class="chip">ELB</span><span class="chip">Aurora</span><span class="chip">VPC</span><span class="chip">IAM</span><span class="chip">S3</span><span class="chip">CloudWatch</span><span class="chip">AWS CLI</span><span class="chip">RDS</span><span class="chip">EKS</span><span class="chip">Auto Scaling</span><span class="chip">CloudTrail</span><span class="chip">Cost optimisation</span></div></div>
-      <div class="card skill"><h3>DevSecOps</h3><div class="chips">
-        <span class="chip key">SonarQube</span><span class="chip">Semgrep</span><span class="chip">Trivy</span><span class="chip">Mend</span><span class="chip">OSV</span><span class="chip">OWASP ZAP</span><span class="chip">Dependency-Check</span><span class="chip">Docker Scout</span><span class="chip">Cosign</span><span class="chip">SBOM</span><span class="chip">SCA</span><span class="chip">SAST</span><span class="chip">DAST</span></div></div>
-      <div class="card skill"><h3>Monitoring &amp; Alerting</h3><div class="chips">
-        <span class="chip key">Prometheus</span><span class="chip key">Grafana</span><span class="chip">Elasticsearch</span><span class="chip">Kibana</span><span class="chip">Elastic Fleet</span></div></div>
-      <div class="card skill"><h3>Mobile CI</h3><div class="chips">
-        <span class="chip">xcodebuild</span><span class="chip">CocoaPods</span><span class="chip">Gradle</span><span class="chip">Firebase App Distribution</span></div></div>
-      <div class="card skill"><h3>Scripting, OS &amp; Tools</h3><div class="chips">
-        <span class="chip key">Bash</span><span class="chip key">YAML</span><span class="chip key">Linux (Ubuntu, RHEL, CentOS)</span><span class="chip">Git</span><span class="chip">Python</span><span class="chip">Claude / Gemini APIs</span><span class="chip">Jira</span><span class="chip">Confluence</span></div></div>
-      <div class="card skill learning"><h3>Infrastructure as Code <small>Currently learning</small></h3><div class="chips">
-        <span class="chip">Terraform</span><span class="chip">Ansible</span></div></div>
+    <div class="sec-head reveal"><div><p class="kicker">Skills</p><h2>Tools I work with</h2></div><p>The tools I use day to day across CI/CD, cloud, security and operations.</p></div>
+    <div class="sgroups">
+      <div class="card sgroup reveal">
+        <h3>CI/CD &amp; Build</h3>
+        <ul class="tools"><li class="tool"><span class="tool-ic"><img src="icons/gitlab.svg" alt="" loading="lazy"></span><span>GitLab CI/CD</span></li><li class="tool"><span class="tool-ic"><img src="icons/gitlab.svg" alt="" loading="lazy"></span><span>GitLab Runner</span></li><li class="tool"><span class="tool-ic"><img src="icons/jenkins.svg" alt="" loading="lazy"></span><span>Jenkins</span></li><li class="tool"><span class="tool-ic"><img src="icons/githubactions.svg" alt="" loading="lazy"></span><span>GitHub Actions</span></li><li class="tool"><span class="tool-ic"><img src="icons/argocd.svg" alt="" loading="lazy"></span><span>Argo CD</span></li><li class="tool"><span class="tool-ic"><img src="icons/apachemaven.svg" alt="" loading="lazy"></span><span>Maven</span></li><li class="tool"><span class="tool-ic"><img src="icons/gradle.svg" alt="" loading="lazy"></span><span>Gradle</span></li><li class="tool"><span class="tool-ic"><img src="icons/sonatype.svg" alt="" loading="lazy"></span><span>Nexus</span></li><li class="tool"><span class="tool-ic"><img src="icons/git.svg" alt="" loading="lazy"></span><span>Git</span></li></ul>
+      </div>
+      <div class="card sgroup reveal">
+        <h3>Containers &amp; Kubernetes</h3>
+        <ul class="tools"><li class="tool"><span class="tool-ic"><img src="icons/docker.svg" alt="" loading="lazy"></span><span>Docker</span></li><li class="tool"><span class="tool-ic"><img src="icons/podman.svg" alt="" loading="lazy"></span><span>Podman</span></li><li class="tool"><span class="tool-ic"><img src="icons/kubernetes.svg" alt="" loading="lazy"></span><span>Kubernetes</span></li><li class="tool"><span class="tool-ic"><img src="icons/rancher.svg" alt="" loading="lazy"></span><span>Rancher RKE2</span></li></ul>
+      </div>
+      <div class="card sgroup reveal">
+        <h3><img class="g-logo" src="icons/aws.svg" alt="">Cloud · AWS</h3>
+        <ul class="tools"><li class="tool"><span class="tool-ic"><b class="mono-ic" style="--m:#232F3E">EC2</b></span><span>EC2</span></li><li class="tool"><span class="tool-ic"><b class="mono-ic" style="--m:#232F3E">ECR</b></span><span>ECR</span></li><li class="tool"><span class="tool-ic"><b class="mono-ic" style="--m:#232F3E">ELB</b></span><span>ELB</span></li><li class="tool"><span class="tool-ic"><b class="mono-ic" style="--m:#232F3E">AU</b></span><span>Aurora</span></li><li class="tool"><span class="tool-ic"><b class="mono-ic" style="--m:#232F3E">RDS</b></span><span>RDS</span></li><li class="tool"><span class="tool-ic"><b class="mono-ic" style="--m:#232F3E">EKS</b></span><span>EKS</span></li><li class="tool"><span class="tool-ic"><b class="mono-ic" style="--m:#232F3E">S3</b></span><span>S3</span></li><li class="tool"><span class="tool-ic"><b class="mono-ic" style="--m:#232F3E">VPC</b></span><span>VPC</span></li><li class="tool"><span class="tool-ic"><b class="mono-ic" style="--m:#232F3E">IAM</b></span><span>IAM</span></li><li class="tool"><span class="tool-ic"><b class="mono-ic" style="--m:#232F3E">CW</b></span><span>CloudWatch</span></li><li class="tool"><span class="tool-ic"><b class="mono-ic" style="--m:#232F3E">CT</b></span><span>CloudTrail</span></li><li class="tool"><span class="tool-ic"><b class="mono-ic" style="--m:#232F3E">AS</b></span><span>Auto Scaling</span></li><li class="tool"><span class="tool-ic"><b class="mono-ic" style="--m:#232F3E">BR</b></span><span>Bedrock</span></li><li class="tool"><span class="tool-ic"><b class="mono-ic" style="--m:#232F3E">CLI</b></span><span>AWS CLI</span></li></ul>
+      </div>
+      <div class="card sgroup reveal">
+        <h3>DevSecOps</h3>
+        <ul class="tools"><li class="tool"><span class="tool-ic"><img src="icons/sonarqubeserver.svg" alt="" loading="lazy"></span><span>SonarQube</span></li><li class="tool"><span class="tool-ic"><b class="mono-ic" style="--m:#1B9C85">SG</b></span><span>Semgrep</span></li><li class="tool"><span class="tool-ic"><img src="icons/trivy.svg" alt="" loading="lazy"></span><span>Trivy</span></li><li class="tool"><span class="tool-ic"><b class="mono-ic" style="--m:#FF6A00">M</b></span><span>Mend</span></li><li class="tool"><span class="tool-ic"><b class="mono-ic" style="--m:#4285F4">OSV</b></span><span>OSV</span></li><li class="tool"><span class="tool-ic"><img src="icons/zap.svg" alt="" loading="lazy"></span><span>OWASP ZAP</span></li><li class="tool"><span class="tool-ic"><img src="icons/owasp.svg" alt="" loading="lazy"></span><span>Dependency-Check</span></li><li class="tool"><span class="tool-ic"><img src="icons/docker.svg" alt="" loading="lazy"></span><span>Docker Scout</span></li><li class="tool"><span class="tool-ic"><img src="icons/sigstore.svg" alt="" loading="lazy"></span><span>Cosign</span></li><li class="tool"><span class="tool-ic"><b class="mono-ic" style="--m:#6B46C1">SB</b></span><span>SBOM</span></li><li class="tool"><span class="tool-ic"><b class="mono-ic" style="--m:#B5292D">JC</b></span><span>JaCoCo</span></li></ul>
+      </div>
+      <div class="card sgroup reveal">
+        <h3>Monitoring &amp; Alerting</h3>
+        <ul class="tools"><li class="tool"><span class="tool-ic"><img src="icons/prometheus.svg" alt="" loading="lazy"></span><span>Prometheus</span></li><li class="tool"><span class="tool-ic"><img src="icons/grafana.svg" alt="" loading="lazy"></span><span>Grafana</span></li><li class="tool"><span class="tool-ic"><img src="icons/elasticsearch.svg" alt="" loading="lazy"></span><span>Elasticsearch</span></li><li class="tool"><span class="tool-ic"><img src="icons/kibana.svg" alt="" loading="lazy"></span><span>Kibana</span></li><li class="tool"><span class="tool-ic"><img src="icons/elastic.svg" alt="" loading="lazy"></span><span>Elastic Fleet</span></li></ul>
+      </div>
+      <div class="card sgroup reveal">
+        <h3>Languages &amp; Scripting</h3>
+        <ul class="tools"><li class="tool"><span class="tool-ic"><img src="icons/java.svg" alt="" loading="lazy"></span><span>Java</span></li><li class="tool"><span class="tool-ic"><img src="icons/angular.svg" alt="" loading="lazy"></span><span>Angular</span></li><li class="tool"><span class="tool-ic"><img src="icons/python.svg" alt="" loading="lazy"></span><span>Python</span></li><li class="tool"><span class="tool-ic"><img src="icons/gnubash.svg" alt="" loading="lazy"></span><span>Bash</span></li><li class="tool"><span class="tool-ic"><img src="icons/yaml.svg" alt="" loading="lazy"></span><span>YAML</span></li></ul>
+      </div>
+      <div class="card sgroup reveal">
+        <h3>Mobile CI</h3>
+        <ul class="tools"><li class="tool"><span class="tool-ic"><img src="icons/xcode.svg" alt="" loading="lazy"></span><span>xcodebuild</span></li><li class="tool"><span class="tool-ic"><img src="icons/cocoapods.svg" alt="" loading="lazy"></span><span>CocoaPods</span></li><li class="tool"><span class="tool-ic"><img src="icons/android.svg" alt="" loading="lazy"></span><span>Android · Gradle</span></li><li class="tool"><span class="tool-ic"><img src="icons/firebase.svg" alt="" loading="lazy"></span><span>Firebase App Distribution</span></li></ul>
+      </div>
+      <div class="card sgroup reveal">
+        <h3>Linux &amp; Collaboration</h3>
+        <ul class="tools"><li class="tool"><span class="tool-ic"><img src="icons/linux.svg" alt="" loading="lazy"></span><span>Linux</span></li><li class="tool"><span class="tool-ic"><img src="icons/ubuntu.svg" alt="" loading="lazy"></span><span>Ubuntu</span></li><li class="tool"><span class="tool-ic"><img src="icons/redhat.svg" alt="" loading="lazy"></span><span>RHEL</span></li><li class="tool"><span class="tool-ic"><img src="icons/centos.svg" alt="" loading="lazy"></span><span>CentOS</span></li><li class="tool"><span class="tool-ic"><img src="icons/jira.svg" alt="" loading="lazy"></span><span>Jira</span></li><li class="tool"><span class="tool-ic"><img src="icons/confluence.svg" alt="" loading="lazy"></span><span>Confluence</span></li></ul>
+      </div>
+      <div class="card sgroup reveal">
+        <h3>AI</h3>
+        <ul class="tools"><li class="tool"><span class="tool-ic"><img src="icons/googlegemini.svg" alt="" loading="lazy"></span><span>Google Gemini</span></li><li class="tool"><span class="tool-ic"><img src="icons/aws.svg" alt="" loading="lazy"></span><span>AWS Bedrock</span></li><li class="tool"><span class="tool-ic"><img src="icons/claude.svg" alt="" loading="lazy"></span><span>Claude</span></li></ul>
+      </div>
+      <div class="card sgroup reveal learning">
+        <h3>Infrastructure as Code <small>Learning</small></h3>
+        <ul class="tools"><li class="tool"><span class="tool-ic"><img src="icons/terraform.svg" alt="" loading="lazy"></span><span>Terraform</span></li><li class="tool"><span class="tool-ic"><img src="icons/ansible.svg" alt="" loading="lazy"></span><span>Ansible</span></li></ul>
+      </div>
     </div>
   </div>
 </section>
@@ -574,17 +762,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <!-- ================= CREDENTIALS ================= -->
 <section class="block" id="credentials">
   <div class="wrap">
-    <div class="sec-head"><div><p class="kicker">Credentials</p><h2>Education &amp; certifications</h2></div></div>
+    <div class="sec-head reveal"><div><p class="kicker">Credentials</p><h2>Education &amp; certifications</h2></div></div>
     <div class="creds">
-      <article class="card cred">
+      <article class="card cred reveal">
         <span class="cred-ic aws">AWS</span>
         <div><h3>AWS Certified Solutions Architect – Associate</h3><p>Amazon Web Services</p></div>
       </article>
-      <article class="card cred">
+      <article class="card cred reveal">
         <span class="cred-ic"><img src="psg-itech.png" alt="" width="200" height="200"></span>
         <div><h3>Bachelor of Engineering</h3><p>PSG Institute of Technology and Applied Research, Coimbatore · 2017 – 2021</p></div>
       </article>
-      <article class="card cred">
+      <article class="card cred reveal">
         <span class="cred-ic promo"><svg><use href="#i-up"/></svg></span>
         <div><h3>Promoted twice in 2 years</h3><p>Trainee → Associate → DevOps Engineer at Tagit</p></div>
       </article>
@@ -595,7 +783,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <!-- ================= CONTACT ================= -->
 <section class="block" id="contact">
   <div class="wrap">
-    <div class="card contact">
+    <div class="card contact reveal">
       <div>
         <p class="kicker">Contact</p>
         <h2>Let&rsquo;s talk about your next DevOps hire.</h2>
@@ -631,6 +819,99 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     root.setAttribute('data-theme',next);
     try{localStorage.setItem('ajay-theme',next)}catch(e){}
   });
+
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* scroll progress + journey fill */
+  var prog=document.getElementById('progress'), jr=document.getElementById('journey'), chs=[].slice.call(document.querySelectorAll('.ch'));
+  function onScroll(){
+    var h=document.documentElement, max=h.scrollHeight-h.clientHeight;
+    prog.style.setProperty('--p', max>0 ? (h.scrollTop/max).toFixed(4) : 0);
+    if(jr){
+      var r=jr.getBoundingClientRect(), mid=innerHeight*0.6;
+      var f=Math.min(1,Math.max(0,(mid-r.top)/r.height));
+      jr.style.setProperty('--fill',f.toFixed(4));
+      chs.forEach(function(c){ c.classList.toggle('lit', c.getBoundingClientRect().top < mid); });
+    }
+  }
+  addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',onScroll); onScroll();
+
+  /* reveal */
+  var rev=[].slice.call(document.querySelectorAll('.reveal'));
+  if('IntersectionObserver' in window && !reduce){
+    var ro=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){
+        var sib=[].slice.call(e.target.parentNode.children).filter(function(n){return n.classList.contains('reveal')});
+        e.target.style.transitionDelay=Math.min(sib.indexOf(e.target),6)*70+'ms';
+        e.target.classList.add('in'); ro.unobserve(e.target);
+      }})},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    rev.forEach(function(el){ro.observe(el)});
+  } else rev.forEach(function(el){el.classList.add('in')});
+
+  /* count-up */
+  var counts=[].slice.call(document.querySelectorAll('.count'));
+  function runCount(el){
+    var to=parseFloat(el.dataset.to), dec=(el.dataset.to.split('.')[1]||'').length, t0=null, dur=1400;
+    function step(t){ if(!t0)t0=t; var k=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-k,3);
+      el.textContent=(to*e).toFixed(dec); if(k<1)requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+    setTimeout(function(){ el.textContent=to.toFixed(dec); }, dur+150);
+  }
+  if(!reduce && 'IntersectionObserver' in window){
+    var co=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){runCount(e.target);co.unobserve(e.target)}})},{threshold:.6});
+    counts.forEach(function(c){c.textContent='0';co.observe(c)});
+  }
+
+  /* live pipeline */
+  var stages=[].slice.call(document.querySelectorAll('#stages .stage'));
+  if(stages.length){
+    var status=document.getElementById('pStatus'), ptime=document.getElementById('pTime'), cl=document.getElementById('cLine');
+    var logs={
+      'maven-build':['mvn -B clean verify -DskipTests=false','[INFO] Building mobeix-core 6.4.2','[INFO] BUILD SUCCESS'],
+      'angular-build':['npm ci && npx ng build --configuration production','✔ Browser application bundle generation complete.'],
+      'unit-tests · jacoco':['mvn test jacoco:report','Tests run: 1,284, Failures: 0, Errors: 0','JaCoCo coverage: 81.4%'],
+      'sonarqube-scan':['mvn sonar:sonar -Dsonar.qualitygate.wait=true','Quality Gate status: PASSED'],
+      'semgrep-sast':['semgrep ci --config p/java --config p/secrets','Findings: 0 blocking'],
+      'mend-sca · osv':['mend ua -d . && osv-scanner -r .','No critical vulnerabilities found'],
+      'nexus-publish':['./gradlew publish  # → nexus/releases','Uploaded mobeix-core-6.4.2.war'],
+      'docker-build':['docker build -t nexus.local/mobeix/core:6.4.2 .','Successfully tagged mobeix/core:6.4.2'],
+      'trivy · sbom':['trivy image --severity HIGH,CRITICAL mobeix/core:6.4.2','syft mobeix/core:6.4.2 -o spdx-json > sbom.json'],
+      'cosign-sign':['cosign sign --key k8s://ci/cosign mobeix/core:6.4.2','Pushing signature to: nexus.local/mobeix/core'],
+      'argocd-sync · nightly':['argocd app sync mobeix-nightly --prune','Health: Healthy · Sync: Synced ✔']
+    };
+    var running=false, clock=0, clockT=null;
+    function fmt(n){var m=Math.floor(n/60),s=n%60;return (m<10?'0':'')+m+':'+(s<10?'0':'')+s}
+    function reset(){ [].forEach.call(document.querySelectorAll('#stages .job'),function(j){j.className='job';j.querySelector('.jt').textContent='0s'});
+      status.className='pipe-status'; status.lastChild.textContent='running'; clock=0; ptime.textContent='00:00'; }
+    function typeLines(lines,total){
+      var i=0, per=total/lines.length;
+      (function next(){ if(i>=lines.length)return; var ln=lines[i++], k=0, isCmd=(i===1);
+        cl.textContent=''; var speed=isCmd?Math.max(10,per*0.5/ln.length):0;
+        if(!speed){cl.textContent=ln; setTimeout(next,per); return;}
+        (function ch(){ cl.textContent=ln.slice(0,++k); if(k<ln.length)setTimeout(ch,speed); else setTimeout(next,per*0.5); })();
+      })();
+    }
+    function runJob(job){ return new Promise(function(res){
+      var d=+job.dataset.d, name=job.querySelector('.jn').textContent, jt=job.querySelector('.jt'), t0=Date.now();
+      job.classList.add('run'); typeLines(logs[name]||[name],d);
+      var iv=setInterval(function(){ jt.textContent=Math.round((Date.now()-t0)/1000*14)+'s'; },120);
+      setTimeout(function(){ clearInterval(iv); jt.textContent=Math.round(d/1000*14)+'s'; job.classList.remove('run'); job.classList.add('ok'); res(); }, d);
+    });}
+    function runPipeline(){
+      if(running)return; running=true; reset();
+      clockT=setInterval(function(){clock+=1;ptime.textContent=fmt(clock)},1000/14*1);
+      var p=Promise.resolve();
+      stages.forEach(function(st){ p=p.then(function(){ return Promise.all([].map.call(st.querySelectorAll('.job'),runJob)); }); });
+      p.then(function(){ clearInterval(clockT); status.className='pipe-status ok'; status.lastChild.textContent='passed';
+        cl.textContent='Job succeeded · pipeline #48213 passed in '+ptime.textContent+' · deployed to nightly';
+        setTimeout(function(){ running=false; if(visible) runPipeline(); }, 6000); });
+    }
+    var visible=false;
+    if(reduce){ [].forEach.call(document.querySelectorAll('#stages .job'),function(j){j.classList.add('ok')}); status.className='pipe-status ok'; status.lastChild.textContent='passed'; cl.textContent='pipeline #48213 passed · deployed to nightly'; }
+    else if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){ visible=es[0].isIntersecting; if(visible)runPipeline(); },{threshold:.35}).observe(document.getElementById('pipeline'));
+    }
+  }
+
   var menu=document.getElementById('menu'), links=document.getElementById('navlinks');
   menu.addEventListener('click',function(){
     var open=links.classList.toggle('open');
