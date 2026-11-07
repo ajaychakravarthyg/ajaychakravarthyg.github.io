@@ -255,7 +255,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .pipe-id b{color:var(--ink)}
 .pipe-time{margin-left:auto;color:var(--muted);font-size:13px}
 .mono{font-family:var(--f-mono)}
-.stages{display:grid;grid-template-columns:repeat(7,minmax(128px,1fr));gap:0;overflow-x:auto;padding:18px 8px 20px;scrollbar-width:thin}
+.stages{display:grid;grid-template-columns:repeat(8,minmax(118px,1fr));gap:0;overflow-x:auto;padding:18px 8px 20px;scrollbar-width:thin}
 .stage{padding:0 10px;position:relative}
 .stage + .stage::before{content:"";position:absolute;left:-6px;top:58px;width:12px;height:2px;background:var(--line)}
 .stage h4{font:500 12px var(--f-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:0 0 10px 4px}
@@ -619,7 +619,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <div class="pipe-intro">
         <p class="kicker">How a product repo ships</p>
         <h3>The pipeline I build, running live</h3>
-        <p>This is the shape of a nightly product pipeline: build, quality and security checks, publish, sign, and deploy with Argo CD.</p>
+        <p>This is the shape of a nightly product pipeline: build, quality and SAST checks, publish to Nexus, build the image and its SBOM, scan the SBOM for vulnerabilities with Trivy (OSV as the second option), sign with Cosign, and deploy with Argo CD.</p>
       </div>
       <div class="card pipe" aria-label="Animated CI/CD pipeline demo">
         <div class="pipe-top">
@@ -634,15 +634,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
           <div class="stage"><h4>test</h4>
             <div class="job" data-d="1300"><div class="jrow"><span class="st"></span><b class="mono-ic sm" style="--m:#B5292D">JC</b><span class="jt mono">0s</span></div><span class="jn">unit-tests · jacoco</span></div></div>
           <div class="stage"><h4>quality</h4>
-            <div class="job" data-d="1200"><div class="jrow"><span class="st"></span><img src="icons/sonarqubeserver.svg" alt=""><span class="jt mono">0s</span></div><span class="jn">sonarqube-scan</span></div></div>
-          <div class="stage"><h4>security</h4>
-            <div class="job" data-d="1100"><div class="jrow"><span class="st"></span><b class="mono-ic sm" style="--m:#1B9C85">SG</b><span class="jt mono">0s</span></div><span class="jn">semgrep-sast</span></div>
-            <div class="job" data-d="1300"><div class="jrow"><span class="st"></span><b class="mono-ic sm" style="--m:#FF6A00">M</b><span class="jt mono">0s</span></div><span class="jn">mend-sca · osv</span></div></div>
+            <div class="job" data-d="1200"><div class="jrow"><span class="st"></span><img src="icons/sonarqubeserver.svg" alt=""><span class="jt mono">0s</span></div><span class="jn">sonarqube-scan</span></div>
+            <div class="job" data-d="1100"><div class="jrow"><span class="st"></span><b class="mono-ic sm" style="--m:#1B9C85">SG</b><span class="jt mono">0s</span></div><span class="jn">semgrep-sast</span></div></div>
           <div class="stage"><h4>publish</h4>
             <div class="job" data-d="1000"><div class="jrow"><span class="st"></span><img src="icons/sonatype.svg" alt=""><span class="jt mono">0s</span></div><span class="jn">nexus-publish</span></div></div>
           <div class="stage"><h4>image</h4>
-            <div class="job" data-d="1500"><div class="jrow"><span class="st"></span><img src="icons/docker.svg" alt=""><span class="jt mono">0s</span></div><span class="jn">docker-build</span></div>
-            <div class="job" data-d="1100"><div class="jrow"><span class="st"></span><img src="icons/trivy.svg" alt=""><span class="jt mono">0s</span></div><span class="jn">trivy · sbom</span></div>
+            <div class="job" data-d="1500"><div class="jrow"><span class="st"></span><img src="icons/docker.svg" alt=""><span class="jt mono">0s</span></div><span class="jn">docker-build · sbom</span></div></div>
+          <div class="stage"><h4>sbom scan</h4>
+            <div class="job" data-d="1200"><div class="jrow"><span class="st"></span><img src="icons/trivy.svg" alt=""><span class="jt mono">0s</span></div><span class="jn">trivy-sbom-scan</span></div>
+            <div class="job" data-d="1100"><div class="jrow"><span class="st"></span><b class="mono-ic sm" style="--m:#4285F4">OSV</b><span class="jt mono">0s</span></div><span class="jn">osv-sbom-scan · alt</span></div></div>
+          <div class="stage"><h4>sign</h4>
             <div class="job" data-d="800"><div class="jrow"><span class="st"></span><img src="icons/sigstore.svg" alt=""><span class="jt mono">0s</span></div><span class="jn">cosign-sign</span></div></div>
           <div class="stage"><h4>deploy</h4>
             <div class="job" data-d="1600"><div class="jrow"><span class="st"></span><img src="icons/argocd.svg" alt=""><span class="jt mono">0s</span></div><span class="jn">argocd-sync · nightly</span></div></div>
@@ -871,10 +872,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       'unit-tests · jacoco':['mvn test jacoco:report','Tests run: 1,284, Failures: 0, Errors: 0','JaCoCo coverage: 81.4%'],
       'sonarqube-scan':['mvn sonar:sonar -Dsonar.qualitygate.wait=true','Quality Gate status: PASSED'],
       'semgrep-sast':['semgrep ci --config p/java --config p/secrets','Findings: 0 blocking'],
-      'mend-sca · osv':['mend ua -d . && osv-scanner -r .','No critical vulnerabilities found'],
       'nexus-publish':['./gradlew publish  # → nexus/releases','Uploaded mobeix-core-6.4.2.war'],
-      'docker-build':['docker build -t nexus.local/mobeix/core:6.4.2 .','Successfully tagged mobeix/core:6.4.2'],
-      'trivy · sbom':['trivy image --severity HIGH,CRITICAL mobeix/core:6.4.2','syft mobeix/core:6.4.2 -o spdx-json > sbom.json'],
+      'docker-build · sbom':['docker build -t nexus.local/mobeix/core:6.4.2 .','syft mobeix/core:6.4.2 -o cyclonedx-json > sbom.json','SBOM written: 412 components'],
+      'trivy-sbom-scan':['trivy sbom --severity HIGH,CRITICAL sbom.json','Total: 0 (HIGH: 0, CRITICAL: 0)'],
+      'osv-sbom-scan · alt':['osv-scanner scan --sbom=sbom.json','No issues found'],
       'cosign-sign':['cosign sign --key k8s://ci/cosign mobeix/core:6.4.2','Pushing signature to: nexus.local/mobeix/core'],
       'argocd-sync · nightly':['argocd app sync mobeix-nightly --prune','Health: Healthy · Sync: Synced ✔']
     };
