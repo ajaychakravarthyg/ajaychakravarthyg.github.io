@@ -2,13 +2,13 @@
 
 Personal portfolio site for **Ajay Chakravarthy G**, Cloud | DevOps Engineer based in Chennai, India.
 
-The career timeline is rendered as a CI/CD pipeline — three progressive roles at Tagit Pvt Ltd
-(Trainee → Associate → DevOps Engineer) as pipeline stages, with each achievement as a job row.
+Recruiter-friendly single page built from the CV: at-a-glance facts, career history at Tagit
+(Trainee → Associate → DevOps Engineer), measurable impact, grouped skills and a downloadable CV.
 
 ## Stack
 
 Single static `index.html`. No build step, no dependencies, no framework.
-Fonts (Bricolage Grotesque, Plus Jakarta Sans, JetBrains Mono) load from Google Fonts; everything else is inline.
+Fonts (Manrope, Inter, JetBrains Mono) load from Google Fonts; everything else is inline.
 
 - Light and dark themes via CSS custom properties, with a manual toggle persisted to `localStorage`
 - Respects `prefers-color-scheme` and `prefers-reduced-motion`
