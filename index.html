@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ajay Chakravarthy G · DevOps Engineer</title>
-<meta name="description" content="Ajay Chakravarthy G, DevOps Engineer with 2.5+ years in product fintech. GitLab CI/CD, Kubernetes, AWS and DevSecOps for digital banking platforms. Based in Chennai, open to Bangalore, Hyderabad and Coimbatore.">
+<meta name="description" content="Ajay Chakravarthy G, DevOps Engineer with 2.5+ years in product fintech. GitLab CI/CD, Kubernetes, AWS and DevSecOps for digital banking platforms. Open to DevOps, Cloud, DevSecOps, SRE, Platform, Release and Infrastructure roles in Chennai, Bangalore, Hyderabad and Coimbatore.">
 <meta property="og:title" content="Ajay Chakravarthy G · DevOps Engineer">
 <meta property="og:description" content="2.5+ years building CI/CD, Kubernetes delivery and security gates for digital banking platforms. AWS Certified Solutions Architect – Associate.">
 <meta property="og:image" content="https://ajaychakravarthyg.github.io/ajay.jpg">
@@ -164,6 +164,16 @@ section.block + section.block{border-top:1px solid var(--line)}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
 .tag{font:500 12px var(--f-mono);padding:4px 9px;border-radius:6px;background:var(--surface-2);color:var(--ink-2);border:1px solid var(--line)}
 
+/* ---------- roles ---------- */
+.roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.role-card{padding:22px 24px}
+.role-card h3{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;margin-bottom:10px}
+.role-card h3 span{width:32px;height:32px;border-radius:9px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex:none}
+.role-card h3 svg{width:17px;height:17px}
+.role-card p{font-size:14.5px}
+.role-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
+.role-chips .chip{background:var(--ok-soft);border-color:transparent;color:var(--ok);font-weight:600}
+
 /* ---------- skills ---------- */
 .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .skill{padding:22px 24px}
@@ -275,6 +285,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v6c0 4.5 3.2 7.8 7.5 9 4.3-1.2 7.5-4.5 7.5-9V6Z"/><path d="m9 12 2 2 4-4"/></symbol>
   <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></symbol>
   <symbol id="i-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17 10 11l4 4 6-7"/><path d="M15 8h5v5"/></symbol>
+  <symbol id="i-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.5-6 5 12 2.5-6h4"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5Z"/><path d="m3 13 9 5 9-5"/></symbol>
+  <symbol id="i-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2"/><path d="M9 15 6 12c1.5-4 5-9 13-9 0 8-5 11.5-9 13Z"/><circle cx="14.5" cy="9.5" r="1.5"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></symbol>
   <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
 </svg>
@@ -284,6 +298,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <a class="brand" href="#top"><span class="brand-badge">AC</span>Ajay Chakravarthy G</a>
     <nav class="nav-links" id="navlinks" aria-label="Primary">
       <a href="#about">About</a>
+      <a href="#roles">Roles</a>
       <a href="#experience">Experience</a>
       <a href="#impact">Impact</a>
       <a href="#skills">Skills</a>
@@ -305,7 +320,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <span class="status"><i></i>Open to new opportunities</span>
+        <span class="status"><i></i>Open to work · DevOps · Cloud · DevSecOps · SRE · Platform · Release · Infra</span>
         <h1>Ajay Chakravarthy G</h1>
         <p class="role">DevOps Engineer · GitLab CI/CD · Kubernetes · AWS · DevSecOps</p>
         <p class="lead">I build and run the CI/CD pipelines, Kubernetes platforms and security checks behind digital banking products used by banks. I have 2.5+ years of experience at a product fintech company and was promoted twice in two years.</p>
@@ -349,7 +364,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <div class="about-text">
         <p>I&rsquo;m a <strong>DevOps Engineer with 2.5+ years of hands-on experience</strong> in CI/CD automation at <strong>Tagit</strong>, a product-based fintech company. Banks use its Mobeix platform to run their digital banking apps.</p>
         <p>I build and improve <strong>GitLab CI/CD pipelines for microservices</strong>, ship containers with <strong>Docker and Kubernetes</strong>, and run the AWS infrastructure behind our CI (EC2, ECR, ELB, Aurora). Security checks are part of every pipeline I build, not something added at the end.</p>
-        <p>I also help keep production running. I set up the monitoring alerts and take on-call shifts for production, pre-prod and SIT environments, so banking services stay available overnight and at weekends.</p>
+        <p>I also help keep production running. I troubleshoot production servers, lead root cause analysis (RCA) after incidents, set up the monitoring alerts, and take on-call shifts for production, pre-prod and SIT environments. I coordinate releases with our development teams and with bank customers, from build to production rollout.</p>
       </div>
       <aside class="card glance" aria-label="At a glance">
         <h3>At a glance</h3>
@@ -358,11 +373,49 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
           <dt>Experience</dt><dd>2.5+ years (since May 2024)</dd>
           <dt>Domain</dt><dd>Fintech · Digital banking</dd>
           <dt>Location</dt><dd>Chennai, India</dd>
-          <dt>Open to</dt><dd>Bangalore, Hyderabad, Coimbatore</dd>
+          <dt>Open to roles</dt><dd>DevOps, Cloud, DevSecOps, SRE, Platform, Release, Infrastructure</dd>
+          <dt>Open to cities</dt><dd>Chennai, Bangalore, Hyderabad, Coimbatore</dd>
           <dt>Certification</dt><dd>AWS Solutions Architect – Associate</dd>
           <dt>Education</dt><dd>B.E., PSG iTech, Coimbatore</dd>
         </dl>
       </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ROLES ================= -->
+<section class="block" id="roles">
+  <div class="wrap">
+    <div class="sec-head"><div><p class="kicker">Open to work</p><h2>Roles I&rsquo;m open to</h2></div><p>At Tagit I&rsquo;ve done hands-on work in each of these areas. Here is what each one has looked like in practice.</p></div>
+    <div class="roles">
+      <article class="card role-card">
+        <h3><span><svg><use href="#i-pipe"/></svg></span>DevOps Engineer</h3>
+        <p>Moved the Mobeix platform from Jenkins to GitLab CI/CD, built pipelines for 10+ microservice repos, and run one central trigger that drives 15+ downstream pipelines.</p>
+      </article>
+      <article class="card role-card">
+        <h3><span><svg><use href="#i-cloud"/></svg></span>Cloud Engineer</h3>
+        <p>Run AWS infrastructure: the GitLab Runner on EC2, ECR registries, Elastic Load Balancers for three applications, and Aurora databases with backups. AWS Certified Solutions Architect – Associate.</p>
+      </article>
+      <article class="card role-card">
+        <h3><span><svg><use href="#i-shield"/></svg></span>DevSecOps Engineer</h3>
+        <p>Built a security pipeline (Semgrep, SonarQube, Trivy) that scans only changed components and cut scan time by 70%. Also run Mend SCA reports for bank clients, Cosign image signing and SBOMs.</p>
+      </article>
+      <article class="card role-card">
+        <h3><span><svg><use href="#i-pulse"/></svg></span>Site Reliability Engineer</h3>
+        <p>Troubleshoot production servers and lead root cause analysis (RCA) after incidents. Set up Prometheus, Grafana and Kibana alerts, and provide on-call support for production, pre-prod and SIT.</p>
+      </article>
+      <article class="card role-card">
+        <h3><span><svg><use href="#i-layers"/></svg></span>Platform Engineer</h3>
+        <p>Built self-service GitLab CI templates used by 50+ developers, a shared CI runner platform, and one-command product installs with Claude Code skills.</p>
+      </article>
+      <article class="card role-card">
+        <h3><span><svg><use href="#i-rocket"/></svg></span>Release Engineer</h3>
+        <p>Coordinate release activities with development teams and bank customers. Manage artifact promotion through Nexus, nightly builds deployed with Argo CD, and iOS/Android builds sent to testers.</p>
+      </article>
+      <article class="card role-card">
+        <h3><span><svg><use href="#i-server"/></svg></span>Infrastructure Engineer</h3>
+        <p>Run on-prem Kubernetes clusters (Rancher RKE2) and Linux servers (Ubuntu, RHEL, CentOS), and set up full Docker and Podman stacks for each product environment.</p>
+      </article>
     </div>
   </div>
 </section>
@@ -397,6 +450,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
             <li>Designed modular, reusable GitLab CI templates that <strong>50+ developers</strong> use on their own.</li>
             <li>Automated Android and iOS builds (Gradle, xcodebuild, CocoaPods) and delivered them to testers through Firebase App Distribution.</li>
             <li>Found and fixed recurring build failures in iOS, Android, Angular and Java (Maven) pipelines, so developers' builds stay green.</li>
+            <li>Run <strong>release activities</strong> with development teams and <strong>bank customers</strong>: planning, building, promoting and rolling out each release.</li>
           </ul>
         </div>
         <div class="area">
@@ -414,6 +468,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
             <li>Run on-prem <strong>Kubernetes clusters (Rancher RKE2)</strong> that host the Mobeix microservices and banking products.</li>
             <li>Set up nightly builds that deploy to Kubernetes through <strong>Argo CD</strong>, following GitOps practice.</li>
             <li>Set up <strong>Prometheus, Grafana and Kibana alerts</strong> for high CPU or memory, full disks, pod restarts and services going down, so problems are caught before they become outages.</li>
+            <li><strong>Troubleshoot production servers</strong> and run <strong>root cause analysis (RCA)</strong> after incidents, writing up the cause and the fix so it doesn't happen again.</li>
             <li>Provide <strong>on-call and after-hours support</strong> for production, pre-prod and SIT environments, including nights and weekends.</li>
           </ul>
         </div>
@@ -544,7 +599,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <div>
         <p class="kicker">Contact</p>
         <h2>Let&rsquo;s talk about your next DevOps hire.</h2>
-        <p>I&rsquo;m open to DevOps and Cloud roles in Bangalore, Hyderabad, Coimbatore or Chennai. The quickest way to reach me is by email or phone. My full CV is one click away.</p>
+        <p>I&rsquo;m open to DevOps, Cloud, DevSecOps, SRE, Platform, Release and Infrastructure roles in Chennai, Bangalore, Hyderabad or Coimbatore. The quickest way to reach me is by email or phone. My full CV is one click away.</p>
         <a class="btn" href="AjayChakravarthyG_DevOps_CV.pdf" download><svg><use href="#i-dl"/></svg>Download CV (PDF)</a>
       </div>
       <div class="contact-list">
