@@ -8,7 +8,7 @@ The career timeline is rendered as a CI/CD pipeline — three progressive roles 
 ## Stack
 
 Single static `index.html`. No build step, no dependencies, no framework.
-Fonts (Archivo, IBM Plex Sans, IBM Plex Mono) load from Google Fonts; everything else is inline.
+Fonts (Bricolage Grotesque, Plus Jakarta Sans, JetBrains Mono) load from Google Fonts; everything else is inline.
 
 - Light and dark themes via CSS custom properties, with a manual toggle persisted to `localStorage`
 - Respects `prefers-color-scheme` and `prefers-reduced-motion`
