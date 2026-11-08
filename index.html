@@ -316,13 +316,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .contact .btn.btn-ghost{color:var(--ink);border-color:var(--line);background:transparent}}
 .btn-reach{animation:glow 2.6s ease-in-out infinite}
 @keyframes glow{50%{box-shadow:0 0 0 6px rgba(255,255,255,.14)}}
-.reach{margin:auto;border:0;padding:0;background:transparent;max-width:min(620px,calc(100vw - 24px));width:100%;color:var(--ink-2)}
+.reach{margin:auto;border:0;padding:0;background:transparent;max-width:min(620px,calc(100vw - 24px));width:100%;max-height:none;overflow:visible;color:var(--ink-2)}
 .reach::backdrop{background:rgba(8,14,26,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
 .reach[open]{animation:dlgIn .35s cubic-bezier(.2,.8,.2,1)}
 .reach[open]::backdrop{animation:fadeIn .3s ease}
 @keyframes dlgIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
 @keyframes fadeIn{from{opacity:0}}
-.reach-form{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 24px 60px rgba(8,14,26,.35);padding:28px;max-height:calc(100dvh - 24px);overflow:auto}
+.reach-form{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 24px 60px rgba(8,14,26,.35);padding:28px;max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.reach-form::-webkit-scrollbar{width:8px}
+.reach-form::-webkit-scrollbar-thumb{background:var(--line);border-radius:8px}
+.reach-form::-webkit-scrollbar-track{background:transparent}
+body:has(.reach[open]){overflow:hidden}
 .reach-x{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink-2);font-size:22px;line-height:1;cursor:pointer}
 .reach-x:hover{color:var(--ink)}
 .reach h3{font-size:24px;font-weight:800;margin-bottom:6px}
@@ -853,12 +857,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <h3 id="reachTitle">Want me to contact you?</h3>
       <p class="reach-sub">Share a few details about the role. Your message goes straight to my inbox.</p>
       <div class="f-grid">
-        <label class="f"><span>Your name *</span><input name="name" required autocomplete="name" placeholder="Priya Sharma"></label>
-        <label class="f"><span>Company</span><input name="company" autocomplete="organization" placeholder="Acme Technologies"></label>
-        <label class="f"><span>Work email *</span><input name="email" type="email" required autocomplete="email" placeholder="priya@acme.com"></label>
-        <label class="f"><span>Phone / WhatsApp</span><input name="phone" type="tel" autocomplete="tel" placeholder="+91 98xxx xxxxx"></label>
-        <label class="f f-full"><span>Role you&rsquo;re hiring for</span><input name="role" placeholder="Senior DevOps Engineer · Bangalore"></label>
-        <label class="f f-full"><span>Message *</span><textarea name="message" required rows="4" placeholder="Hi Ajay, we have an opening that matches your profile…"></textarea></label>
+        <label class="f"><span>Your name *</span><input name="name" required autocomplete="name" placeholder="Full name"></label>
+        <label class="f"><span>Company</span><input name="company" autocomplete="organization" placeholder="Company name"></label>
+        <label class="f"><span>Work email *</span><input name="email" type="email" required autocomplete="email" placeholder="name@company.com"></label>
+        <label class="f"><span>Phone / WhatsApp</span><input name="phone" type="tel" autocomplete="tel" placeholder="Optional"></label>
+        <label class="f f-full"><span>Role you&rsquo;re hiring for</span><input name="role" placeholder="e.g. DevOps Engineer, location"></label>
+        <label class="f f-full"><span>Message *</span><textarea name="message" required rows="4" placeholder="Tell me about the role…"></textarea></label>
       </div>
       <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <p class="reach-err" id="reachErr" role="alert"></p>
