@@ -185,7 +185,7 @@ section.block + section.block{border-top:1px solid var(--line)}
 .skill.learning .chip{background:transparent;border-style:dashed;color:var(--ink-2)}
 
 /* ---------- credentials ---------- */
-.creds{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.creds{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .cred{padding:24px;display:flex;flex-direction:column;gap:14px}
 .cred-ic{width:52px;height:52px;border-radius:12px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);overflow:hidden}
 .cred-ic.aws{background:#232F3E;border-color:#232F3E;color:#FF9900;font:800 15px var(--f-head)}
@@ -307,6 +307,51 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .btn-primary:hover{box-shadow:0 6px 18px color-mix(in srgb,var(--accent) 35%,transparent)}
 .progress{position:fixed;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,var(--accent),var(--ok));transform-origin:left;transform:scaleX(var(--p,0));z-index:60}
 
+
+/* ---------- reach dialog ---------- */
+.contact-cta{display:flex;flex-wrap:wrap;gap:10px}
+.contact .btn.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+.contact .btn.btn-ghost:hover{background:rgba(255,255,255,.08)}
+:root[data-theme="dark"] .contact .btn.btn-ghost{color:var(--ink);border-color:var(--line);background:transparent}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .contact .btn.btn-ghost{color:var(--ink);border-color:var(--line);background:transparent}}
+.btn-reach{animation:glow 2.6s ease-in-out infinite}
+@keyframes glow{50%{box-shadow:0 0 0 6px rgba(255,255,255,.14)}}
+.reach{margin:auto;border:0;padding:0;background:transparent;max-width:min(620px,calc(100vw - 24px));width:100%;color:var(--ink-2)}
+.reach::backdrop{background:rgba(8,14,26,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.reach[open]{animation:dlgIn .35s cubic-bezier(.2,.8,.2,1)}
+.reach[open]::backdrop{animation:fadeIn .3s ease}
+@keyframes dlgIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}}
+.reach-form{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 24px 60px rgba(8,14,26,.35);padding:28px;max-height:calc(100dvh - 24px);overflow:auto}
+.reach-x{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink-2);font-size:22px;line-height:1;cursor:pointer}
+.reach-x:hover{color:var(--ink)}
+.reach h3{font-size:24px;font-weight:800;margin-bottom:6px}
+.reach-sub{color:var(--muted);font-size:15px;margin-bottom:20px}
+.f-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.f{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:var(--ink)}
+.f-full{grid-column:1/-1}
+.f input,.f textarea{font:400 15px var(--f-body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 13px;transition:border-color .2s,box-shadow .2s;resize:vertical}
+.f input::placeholder,.f textarea::placeholder{color:var(--muted);opacity:.7}
+.f input:focus,.f textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 16%,transparent)}
+.f .bad{border-color:#D93D3D;box-shadow:0 0 0 4px rgba(217,61,61,.12)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.reach-err{color:#D93D3D;font-size:14px;min-height:1.2em;margin:12px 0 0}
+.reach-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.btn-wa{background:#25D366;border-color:#25D366;color:#073B1E}
+.btn-wa:hover{background:#1EBE5A;border-color:#1EBE5A}
+.reach-note{font-size:12.5px;color:var(--muted);margin-top:14px}
+.spin{display:none;width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;animation:spin .8s linear infinite}
+.sending .spin{display:inline-block}
+.sending svg{display:none}
+.reach-done{text-align:center;padding:24px 8px 8px}
+.reach-done h3{margin:18px 0 8px}
+.reach-done p{color:var(--muted);margin-bottom:22px}
+.tick{width:76px;height:76px;margin:0 auto;display:block}
+.tick circle{fill:none;stroke:var(--ok);stroke-width:3;stroke-dasharray:151;stroke-dashoffset:151;animation:draw .6s ease forwards}
+.tick path{fill:none;stroke:var(--ok);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:40;stroke-dashoffset:40;animation:draw .4s .5s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@media (max-width:620px){.f-grid{grid-template-columns:1fr}.reach-form{padding:22px 18px}.reach-actions .btn{flex:1;justify-content:center}}
+
 /* ---------- responsive ---------- */
 @media (max-width:1000px){
   .stats{grid-template-columns:repeat(3,1fr)}
@@ -387,6 +432,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5Z"/><path d="m3 13 9 5 9-5"/></symbol>
   <symbol id="i-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2"/><path d="M9 15 6 12c1.5-4 5-9 13-9 0 8-5 11.5-9 13Z"/><circle cx="14.5" cy="9.5" r="1.5"/></symbol>
   <symbol id="i-server" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.32l-.34-.2-3.57.94.95-3.48-.22-.36a9.4 9.4 0 0 1-1.44-5.02c0-5.2 4.24-9.44 9.44-9.44a9.38 9.38 0 0 1 9.43 9.45c0 5.2-4.24 9.43-9.44 9.43m8.03-17.47A11.3 11.3 0 0 0 12.05.7C5.8.7.7 5.79.7 12.05c0 2 .52 3.95 1.52 5.67L.6 23.6l6.02-1.58a11.3 11.3 0 0 0 5.42 1.38h.01c6.26 0 11.35-5.09 11.35-11.35 0-3.03-1.18-5.88-3.32-8.02"/></symbol>
   <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
 </svg>
@@ -400,7 +446,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <a href="#experience">Experience</a>
       <a href="#impact">Impact</a>
       <a href="#skills">Skills</a>
-      <a href="#credentials">Credentials</a>
+      <a href="#education">Education</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="nav-act">
@@ -657,11 +703,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <span class="yr">2021 – 2023</span>
         <div><h4>Career break</h4><p>Took time off to support my family through an unexpected situation.</p></div>
       </div>
-      <div class="card mini reveal">
-        <span class="yr">2017 – 2021</span>
-        <img class="mini-logo" src="psg-itech.png" alt="PSG iTech crest" width="200" height="200">
-        <div><h4>Bachelor of Engineering</h4><p>PSG Institute of Technology and Applied Research, Coimbatore</p></div>
-      </div>
     </div>
   </div>
 </section>
@@ -761,21 +802,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </section>
 
 <!-- ================= CREDENTIALS ================= -->
-<section class="block" id="credentials">
+<section class="block" id="education">
   <div class="wrap">
-    <div class="sec-head reveal"><div><p class="kicker">Credentials</p><h2>Education &amp; certifications</h2></div></div>
+    <div class="sec-head reveal"><div><p class="kicker">Qualifications</p><h2>Education &amp; certification</h2></div></div>
     <div class="creds">
       <article class="card cred reveal">
         <span class="cred-ic aws">AWS</span>
-        <div><h3>AWS Certified Solutions Architect – Associate</h3><p>Amazon Web Services</p></div>
+        <div><h3>AWS Certified Solutions Architect – Associate</h3><p>Amazon Web Services · Professional certification</p></div>
       </article>
       <article class="card cred reveal">
         <span class="cred-ic"><img src="psg-itech.png" alt="" width="200" height="200"></span>
         <div><h3>Bachelor of Engineering</h3><p>PSG Institute of Technology and Applied Research, Coimbatore · 2017 – 2021</p></div>
-      </article>
-      <article class="card cred reveal">
-        <span class="cred-ic promo"><svg><use href="#i-up"/></svg></span>
-        <div><h3>Promoted twice in 2 years</h3><p>Trainee → Associate → DevOps Engineer at Tagit</p></div>
       </article>
     </div>
   </div>
@@ -788,11 +825,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <div>
         <p class="kicker">Contact</p>
         <h2>Let&rsquo;s talk about your next DevOps hire.</h2>
-        <p>I&rsquo;m open to DevOps, Cloud, DevSecOps, SRE, Platform, Release and Infrastructure roles in Chennai, Bangalore, Hyderabad or Coimbatore. The quickest way to reach me is by email or phone. My full CV is one click away.</p>
-        <a class="btn" href="AjayChakravarthyG_DevOps_CV.pdf" download><svg><use href="#i-dl"/></svg>Download CV (PDF)</a>
+        <p>I&rsquo;m open to DevOps, Cloud, DevSecOps, SRE, Platform, Release and Infrastructure roles in Chennai, Bangalore, Hyderabad or Coimbatore. Leave your details and I&rsquo;ll get back to you, or reach me directly by email, phone or WhatsApp.</p>
+        <div class="contact-cta">
+          <button class="btn btn-reach" type="button" data-open-reach><svg><use href="#i-mail"/></svg>Want me to contact you?</button>
+          <a class="btn btn-ghost" href="AjayChakravarthyG_DevOps_CV.pdf" download><svg><use href="#i-dl"/></svg>Download CV (PDF)</a>
+        </div>
       </div>
       <div class="contact-list">
         <a class="contact-item" href="mailto:ajay.chakravarthyg@gmail.com"><svg><use href="#i-mail"/></svg><span><small>Email</small><b>ajay.chakravarthyg@gmail.com</b></span></a>
+        <a class="contact-item" href="https://wa.me/918667007330" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg><span><small>WhatsApp</small><b>Chat on WhatsApp</b></span></a>
         <a class="contact-item" href="tel:+918667007330"><svg><use href="#i-phone"/></svg><span><small>Phone</small><b>+91 86670 07330</b></span></a>
         <a class="contact-item" href="https://www.linkedin.com/in/g-ajay-chakravarthy/" target="_blank" rel="noopener"><svg><use href="#i-in"/></svg><span><small>LinkedIn</small><b>in/g-ajay-chakravarthy</b></span></a>
         <a class="contact-item" href="https://github.com/ajaychakravarthyg" target="_blank" rel="noopener"><svg><use href="#i-gh"/></svg><span><small>GitHub</small><b>github.com/ajaychakravarthyg</b></span></a>
@@ -802,6 +843,39 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </section>
 
 </main>
+
+
+<dialog class="reach" id="reach" aria-labelledby="reachTitle">
+  <form class="reach-form" id="reachForm" novalidate>
+    <button class="reach-x" type="button" data-close-reach aria-label="Close">&times;</button>
+    <div class="reach-body" id="reachBody">
+      <p class="kicker">Get in touch</p>
+      <h3 id="reachTitle">Want me to contact you?</h3>
+      <p class="reach-sub">Share a few details about the role. Your message goes straight to my inbox.</p>
+      <div class="f-grid">
+        <label class="f"><span>Your name *</span><input name="name" required autocomplete="name" placeholder="Priya Sharma"></label>
+        <label class="f"><span>Company</span><input name="company" autocomplete="organization" placeholder="Acme Technologies"></label>
+        <label class="f"><span>Work email *</span><input name="email" type="email" required autocomplete="email" placeholder="priya@acme.com"></label>
+        <label class="f"><span>Phone / WhatsApp</span><input name="phone" type="tel" autocomplete="tel" placeholder="+91 98xxx xxxxx"></label>
+        <label class="f f-full"><span>Role you&rsquo;re hiring for</span><input name="role" placeholder="Senior DevOps Engineer · Bangalore"></label>
+        <label class="f f-full"><span>Message *</span><textarea name="message" required rows="4" placeholder="Hi Ajay, we have an opening that matches your profile…"></textarea></label>
+      </div>
+      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <p class="reach-err" id="reachErr" role="alert"></p>
+      <div class="reach-actions">
+        <button class="btn btn-primary" type="submit" id="reachSend"><span class="spin" aria-hidden="true"></span><svg><use href="#i-mail"/></svg><span class="lbl">Send message</span></button>
+        <button class="btn btn-wa" type="button" id="reachWa"><svg><use href="#i-wa"/></svg>Send on WhatsApp</button>
+      </div>
+      <p class="reach-note">“Send message” emails me directly. “Send on WhatsApp” opens WhatsApp with your message ready to send.</p>
+    </div>
+    <div class="reach-done" id="reachDone" hidden>
+      <svg class="tick" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="m15 27 7 7 15-16"/></svg>
+      <h3>Thanks, your message is on its way!</h3>
+      <p>I&rsquo;ve received your details and will get back to you soon.</p>
+      <button class="btn" type="button" data-close-reach>Close</button>
+    </div>
+  </form>
+</dialog>
 
 <footer>
   <div class="wrap">
@@ -912,6 +986,42 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       new IntersectionObserver(function(es){ visible=es[0].isIntersecting; if(visible)runPipeline(); },{threshold:.35}).observe(document.getElementById('pipeline'));
     }
   }
+
+
+  /* reach dialog */
+  var dlg=document.getElementById('reach'), form=document.getElementById('reachForm'), err=document.getElementById('reachErr'),
+      sendBtn=document.getElementById('reachSend'), body=document.getElementById('reachBody'), done=document.getElementById('reachDone');
+  function openReach(){ if(dlg.showModal){ dlg.showModal(); } else { dlg.setAttribute('open',''); } setTimeout(function(){ form.elements['name'].focus(); },50); }
+  function closeReach(){ dlg.close ? dlg.close() : dlg.removeAttribute('open'); }
+  [].forEach.call(document.querySelectorAll('[data-open-reach]'),function(b){b.addEventListener('click',openReach)});
+  [].forEach.call(document.querySelectorAll('[data-close-reach]'),function(b){b.addEventListener('click',closeReach)});
+  dlg.addEventListener('click',function(e){ if(e.target===dlg) closeReach(); });
+  dlg.addEventListener('close',function(){ if(!done.hidden){ form.reset(); done.hidden=true; body.hidden=false; } });
+  function val(n){ return (form.elements[n].value||'').trim(); }
+  function check(){
+    var ok=true; err.textContent='';
+    ['name','email','message'].forEach(function(n){ var bad=!val(n)||(n==='email'&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val(n))); form.elements[n].classList.toggle('bad',bad); if(bad) ok=false; });
+    if(!ok) err.textContent='Please fill in your name, a valid email and a message.';
+    return ok;
+  }
+  form.addEventListener('input',function(e){ e.target.classList.remove('bad'); });
+  form.addEventListener('submit',function(e){
+    e.preventDefault(); if(form.elements['_honey'].value) return; if(!check()) return;
+    sendBtn.classList.add('sending'); sendBtn.disabled=true; sendBtn.querySelector('.lbl').textContent='Sending…';
+    fetch('https://formsubmit.co/ajax/ajay.chakravarthyg@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({name:val('name'),company:val('company'),email:val('email'),phone:val('phone'),role:val('role'),message:val('message'),
+        _subject:'Portfolio: '+val('name')+(val('company')?' ('+val('company')+')':'')+' wants to contact you',_replyto:val('email'),_template:'table',_captcha:'false'})})
+    .then(function(r){ return r.json().then(function(j){ if(!r.ok||String(j.success)!=='true') throw new Error(j.message||'failed'); }); })
+    .then(function(){ body.hidden=true; done.hidden=false; })
+    .catch(function(){ err.innerHTML='Couldn&rsquo;t send right now. Please email <a href="mailto:ajay.chakravarthyg@gmail.com">ajay.chakravarthyg@gmail.com</a> or use WhatsApp.'; })
+    .then(function(){ sendBtn.classList.remove('sending'); sendBtn.disabled=false; sendBtn.querySelector('.lbl').textContent='Send message'; });
+  });
+  document.getElementById('reachWa').addEventListener('click',function(){
+    var miss=['name','message'].filter(function(n){ var b=!val(n); form.elements[n].classList.toggle('bad',b); return b; });
+    if(miss.length){ err.textContent='Please add your name and a message.'; return; } err.textContent='';
+    var t='Hi Ajay, I\'m '+val('name')+(val('company')?' from '+val('company'):'')+'.'+(val('role')?'\nRole: '+val('role'):'')+'\n\n'+val('message')+(val('email')?'\n\nEmail: '+val('email'):'')+(val('phone')?'\nPhone: '+val('phone'):'');
+    window.open('https://wa.me/918667007330?text='+encodeURIComponent(t),'_blank','noopener');
+  });
 
   var menu=document.getElementById('menu'), links=document.getElementById('navlinks');
   menu.addEventListener('click',function(){
