@@ -12,7 +12,7 @@
 <meta property="og:type" content="profile">
 <meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://ajaychakravarthyg.github.io/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%230F2A5C%27/%3E%3Ctext x=%2732%27 y=%2743%27 font-family=%27Arial,sans-serif%27 font-size=%2728%27 font-weight=%27700%27 fill=%27white%27 text-anchor=%27middle%27%3EAC%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%2064%2064%27%3E%3Crect%20width=%2764%27%20height=%2764%27%20rx=%2714%27%20fill=%27%230F2A5C%27/%3E%3Ctext%20x=%2732%27%20y=%2743%27%20font-family=%27Arial,sans-serif%27%20font-size=%2728%27%20font-weight=%27700%27%20fill=%27white%27%20text-anchor=%27middle%27%3EAC%3C/text%3E%3C/svg%3E">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('ajay-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,8 +22,8 @@
 </script>
 <style>
 :root{
-  --bg:#F7F8FA; --surface:#FFFFFF; --surface-2:#F1F4F9; --ink:#0E1726; --ink-2:#3B4658; --muted:#6B7689;
-  --line:#E3E7EE; --brand:#0F2A5C; --accent:#1F5FD6; --accent-soft:#E8F0FF; --ok:#0F8A5F; --ok-soft:#E3F5EE;
+  --bg:#F7F8FA; --surface:#FFFFFF; --surface-2:#F1F4F9; --ink:#0E1726; --ink-2:#3B4658; --muted:#5B6576;
+  --line:#E3E7EE; --brand:#0F2A5C; --accent:#1F5FD6; --accent-soft:#E8F0FF; --ok:#0B7550; --ok-soft:#E3F5EE;
   --shadow:0 1px 2px rgba(14,23,38,.04),0 6px 24px rgba(14,23,38,.06);
   --radius:14px; --maxw:1120px;
   --f-head:"Manrope",system-ui,sans-serif; --f-body:"Inter",system-ui,sans-serif; --f-mono:"JetBrains Mono",ui-monospace,monospace;
@@ -335,7 +335,7 @@ body:has(.reach[open]){overflow:hidden}
 .f{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600;color:var(--ink)}
 .f-full{grid-column:1/-1}
 .f input,.f textarea{font:400 15px var(--f-body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 13px;transition:border-color .2s,box-shadow .2s;resize:vertical}
-.f input::placeholder,.f textarea::placeholder{color:var(--muted);opacity:.7}
+.f input::placeholder,.f textarea::placeholder{color:var(--muted);opacity:1}
 .f input:focus,.f textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 16%,transparent)}
 .f .bad{border-color:#D93D3D;box-shadow:0 0 0 4px rgba(217,61,61,.12)}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
@@ -401,6 +401,10 @@ body:has(.reach[open]){overflow:hidden}
   .glance dt{padding-bottom:0;border-top:1px solid var(--line)}
   .glance dd{border-top:0;padding-top:2px}
 }
+.pipe-demo{font:500 11px var(--f-mono);color:var(--muted);border:1px dashed var(--line);border-radius:6px;padding:2px 7px;margin-left:auto}
+.pipe-demo + .pipe-time{margin-left:0}
+.verify{font-size:13.5px;margin-top:6px}
+@media (max-width:380px){.brand{font-size:14px;gap:8px}.nav-in{gap:10px}.nav-act{gap:6px}.icon-btn{width:34px;height:34px}.nav .btn-cv{padding:0 10px}}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}.js .reveal,.js .hero .rise,.js .portrait{opacity:1!important;transform:none!important}}
 @media print{
   .js .reveal,.js .hero .rise{opacity:1!important;transform:none!important}
@@ -671,10 +675,11 @@ body:has(.reach[open]){overflow:hidden}
         <h3>The pipeline I build, running live</h3>
         <p>This is the shape of a nightly product pipeline: build, quality and SAST checks, publish to Nexus, build the image and its SBOM, scan the SBOM for vulnerabilities with Trivy (OSV as the second option), sign with Cosign, and deploy with Argo CD.</p>
       </div>
-      <div class="card pipe" aria-label="Animated CI/CD pipeline demo">
+      <div class="card pipe" role="region" aria-label="Animated CI/CD pipeline demo">
         <div class="pipe-top">
           <span class="pipe-status" id="pStatus"><i></i><span>running</span></span>
           <span class="pipe-id">Pipeline <b>#48213</b> · <span class="mono">main</span> · nightly schedule 01:00 IST</span>
+          <span class="pipe-demo">Illustrative demo</span>
           <span class="pipe-time mono" id="pTime">00:00</span>
         </div>
         <div class="stages" id="stages">
@@ -747,7 +752,7 @@ body:has(.reach[open]){overflow:hidden}
         <div class="tags"><span class="tag">Claude Code</span><span class="tag">Docker</span><span class="tag">Bash</span><span class="tag">Nexus</span></div>
       </article>
       <article class="card proj reveal">
-        <span class="metric">24×7</span><span class="metric-l">production coverage</span>
+        <span class="metric">On-call</span><span class="metric-l">prod · pre-prod · SIT</span>
         <h3>Monitoring &amp; on-call for banking services</h3>
         <p>Prometheus, Grafana and Kibana alerts on production servers, plus after-hours on-call for production, pre-prod and SIT environments.</p>
         <div class="tags"><span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">Kibana</span><span class="tag">RKE2</span></div>
@@ -812,7 +817,7 @@ body:has(.reach[open]){overflow:hidden}
     <div class="creds">
       <article class="card cred reveal">
         <span class="cred-ic aws">AWS</span>
-        <div><h3>AWS Certified Solutions Architect – Associate</h3><p>Amazon Web Services · Professional certification</p></div>
+        <div><h3>AWS Certified Solutions Architect – Associate</h3><p>Amazon Web Services</p><p class="verify">Validation no. <span class="mono">S83XWE11WEF11DWZ</span> · <a href="https://aws.amazon.com/verification" target="_blank" rel="noopener">Verify on AWS ↗</a></p></div>
       </article>
       <article class="card cred reveal">
         <span class="cred-ic"><img src="psg-itech.png" alt="" width="200" height="200"></span>
